@@ -24,8 +24,7 @@ public class FoodFindController {
 	public String upload(Model model) throws Exception {
 		System.out.println("업로드 메인 내");
 		model.addAttribute("check","사진을 넣어주세요");
-		asdfasdfasdfawsdf
-		//jkhkjhk
+	}
 		return "uploadpage";
 	}
 
