@@ -129,7 +129,7 @@ public class RecipeCvl implements RecipeController {
 	GoogleTtsService googleTtsService;
 
 	@Override
-	@GetMapping("/main")
+	@GetMapping("/main1")
 	public String viewMain(Model model) throws Exception {
 		// TODO Auto-generated method stub
 		
