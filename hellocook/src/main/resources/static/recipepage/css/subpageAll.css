@@ -1,0 +1,267 @@
+
+a {
+  text-decoration: none;
+  color: #777;
+  font-size: 19px;
+}
+
+      /* 링크 밑줄지우기 */
+li { 
+  list-style:none;
+}
+    /* li 앞에 점 지우기  */
+
+    body {
+      font-family: 'OTTOGISans', 'Malgun Gothic', '맑은 고딕', "돋움", sans-serif;
+      font-size: 16px;
+      font-weight: normal;
+      line-height: 1.5;
+      color: #777;
+      letter-spacing: 0;
+      -webkit-text-size-adjust: none;
+  }
+
+      /* 전체적 기본 폰트 틀 */
+      .title h2 {
+        font-size: 45px;
+        line-height: 45px;
+        color: #333;
+        text-align: center;
+        display: block;
+    }
+    /* 신비한 요리사전 글자 css */
+
+    .subTopAreahit {
+      background: #f3f3f3;
+      padding: 0 0 20px;
+  } 
+    /* 요리사전 레시피쪽 색지정 */
+
+    .container {
+      width: 100%;
+      min-width: 1300px;
+      margin: auto auto;
+      position: relative;
+      display: block;
+      clear: both;
+  }
+  .Tag h3 {
+    font-size: 30px;
+    color: #f64646;
+    margin-bottom: 50px;
+}
+
+      /* 신비한 요리사전이 제안하는 맛있고 건강한 요리 */
+  .Tag {
+    position: relative;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+
+
+.Tag a {
+  font-size: 20px;
+  line-height: 25px;
+  color: #777777;
+  padding: 5px 20px 7px;
+  border: 1px solid #c1c1c1;
+  background: #fff;
+  border-radius: 50px;
+  
+}
+/* 테그 이미지 모양  */
+
+.Tag .subtop{margin-bottom:30px;}
+
+
+
+
+ul {
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+}
+
+.Tag ul {
+  display: block;
+  text-align: center;
+}
+
+.cate_area{width: 1250px;margin:50px auto 30px;}
+.cate_area .cate_menu{display: table;text-align: center;}
+.cate_area .cate_menu li{float: left; width:98px; height: 140px; margin-right:93px;font-size: 17px; color: #666; font-weight: bold;}
+.cate_area .cate_menu li:last-child{margin-right:0;}
+.cate_area .cate_menu a{ width:98px; height: 98px; margin-bottom: 10px; display: block; background: url('@{/iconimage/category_icon.png}'); background-position-y:top;}
+.cate_area .cate_menu a:hover,.cate_area .cate_menu a.active{background-position-y: bottom;}
+.cate_area .cate_menu a.cate_icon01{background-position-x: 0}
+.cate_area .cate_menu a.cate_icon1{background-position-x: -98px}
+.cate_area .cate_menu a.cate_icon10{background-position-x: -196px}
+.cate_area .cate_menu a.cate_icon11{background-position-x: -294px}
+.cate_area .cate_menu a.cate_icon12{background-position-x: -392px}
+.cate_area .cate_menu a.cate_icon13{background-position-x: -490px}
+.cate_area .cate_menu.sch{width:1060px; margin:auto;}
+/* <!-- 매인테그 아이콘 관련 css--> */
+
+.cate_area {
+  width: 1250px;
+  margin: 50px auto 30px;
+}
+
+.cate_area .cate_menu li {
+  float: left;
+  width: 98px;
+  height: 140px;
+  margin-right: 93px;
+  font-size: 17px;
+  color: #666;
+  font-weight: bold;
+  }
+      /*매인테그 아이콘 폰트 사이즈 및 색깔*/
+  
+      .cate_area .cate_menu.sch{width:1060px; margin:auto;}
+
+hr{ border: 1px solid red ; }
+
+td{ font-size: 16;}
+
+.subTopAreahit {
+background: #f3f3f3;
+padding: 0 0 20px;
+}
+    /* 레시피 카테고리 쪽 백그라운드 색상쪾 담당 css */
+
+    .content {
+      position: relative;
+      width: 1280px;
+      margin: 0 auto;
+      vertical-align: top;
+      display: block;
+      clear: both;
+  }
+
+  tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+.thmb_list02 h2 {
+  font-size: 30px;
+  color: #333;
+  text-align: center;
+  display: block;
+  margin-bottom: 30px;
+}
+
+.thmb_list02 h2 strong {
+  color: #f64646;
+}
+
+.thmb_list02 {
+  width: 1300px;
+  margin: 0 auto;
+  display: table;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.thmb_list02 .info {
+  padding: 30px 0 10px;
+}
+
+
+.pt90 {
+  padding-top: 90px;
+}
+.thmb_list02 .list_area {
+  width: 100%;
+  display: table;
+}
+
+.thmb_list02 .item {
+  float: left;
+  width: 305px;
+  min-height: 300px;
+  margin-right: 20px;
+  vertical-align: top;
+  padding: 15px 0 30px;
+}
+
+.cate_sub th {
+  font-size: 19px;
+  color: #666;
+  font-weight: bold;
+  border-bottom: 1px solid #bbbbbb;
+  background: #f9f9f9;
+  padding: 20px;
+  width: 100px;
+}
+
+/* 세부카테고리 */
+
+.cate_sub td {
+  border-bottom: 1px solid #bbbbbb;
+  padding: 20px;
+}
+/* 밑줄긋기 세부카테고리에 해당 */
+
+.thmb_list02 .thmb .icon i {
+  width: 48px;
+  height: 48px;
+  background: url(../iconimage/list_icon.png)no-repeat;
+  content: '';
+  display: inline-block;
+  font-size: 0;
+  margin-left: 7px;
+}
+
+/* 아이콘 추천, 인기 양식 추천 인기는 top, bottle로 나뉜다  */
+
+.thmb_list02 .thmb .icon .icon_dm {
+  background-position: top;
+}
+
+.thmb_list02 .thmb .icon .icon_best {
+  background-position: bottom;
+}
+
+.thmb_list02 .thmb .icon {
+ /* position: absolute;*/
+  right: 50px;
+  bottom: 0;
+  z-index: 2;
+  text-align: right;
+  width: 80%;
+  height: 48px;
+}
+
+.thmb_list02 .info .info_title a {
+  font-size: 22px;
+  color: #333;
+  font-weight: bold;
+}
+
+.scale {
+  transform: scale(1);
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transition: all 0.3s ease-in-out;   /* 부드러운 모션을 위해 추가*/
+}
+
+/* 마우스 갖다대면 이미지 커지는거  */
+
+.scale:hover {
+  transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -o-transform: scale(1.2);
+}
+.img {width:325px; height:215px; overflow:hidden } 
+/* 이미지가 화면을 벗어나지 않게 함 */
+

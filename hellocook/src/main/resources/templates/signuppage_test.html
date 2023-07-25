@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>신비한 요리사전 : 회원가입</title>
+        <!-- 부트스트랩 5.2(링크를 Content Delivery Network이라고 한다) -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <!-- 휴대번호 하이픈(-) 자동 입력 -->
+        <script th:src="@{/signuppage/js/tel.js}" type="module"></script>
+        <!-- 구글 웹폰트 불러오기 -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+
+        <!-- 회원가입 css 링크-->
+        <link rel="stylesheet" th:href="@{/signuppage/css/style.css}">
+    </head> 
+        <body> 
+            <!-- 전체화면영역 -->
+            <section class="container">
+
+                    <!-- input칸 max width 영역 -->
+                    <div class="container py-4">
+                        <!-- 상단 텍스트 --> 
+                        <div class="row align-items-center justify-content-between">
+                            <a class="navbar-brand h1 text-center" href="index.do">
+                                <span class="text-danger h4">신비한</span> <span class="text-danger h4">요리 사전</span>
+                            </a>
+                        </div>
+                        <!-- 아이디 부터 가입하기 버튼까지 -->
+                        <form>
+                            <!-- 아이디, 아이디 input 영역 -->
+                            <div class="form-group">
+                                <label for="exampleInputEmail1" class="form-label mt-4">아이디</label>
+                                <!-- 아이콘 넣으려면 필요한 영역 -->
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    <!-- 스판 클래스가 없으면 아이콘이 왼쪽 바깥에 있음 -->
+                                    <span class="input-group-text">
+                                        <!-- 아이디 창에 들어간 아이콘 -->    
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-vcard" viewBox="0 0 16 16">
+                                            <path d="M5 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm4-2.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5ZM9 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4A.5.5 0 0 1 9 8Zm1 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5Z"></path>
+                                            <path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2ZM1 4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H8.96c.026-.163.04-.33.04-.5C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1.006 1.006 0 0 1 1 12V4Z"></path>
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
+                            <!-- 비밀번호, 비밀번호 input 영역 -->
+                            <div class="form-group has-success">
+                                <label class="form-label mt-4" for="inputValid">비밀번호</label>
+                                <input type="password" class="form-control is-valid" id="inputValid">
+                                <div class="valid-feedback"></div>
+                            </div>
+                            <!-- 비밀번호 재확인, 비밀번호 재확인 input 영역 -->
+                            <div class="form-group has-danger">
+                                <label class="form-label mt-4" for="inputInvalid">비밀번호 재확인</label>
+                                <input type="password" class="form-control is-valid" id="inputInvalid">
+                                <div class="invalid-feedback">비밀번호가 일치하지 않습니다</div>
+                            </div>
+                            <!-- 이름, 이름 input 영역 -->
+                            <div class="form-group">
+                                <label for="exampleInputEmail1" class="form-label mt-4">이름</label>
+                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            </div>
+                            <!-- 생년월일, 생년월일 input 영역 -->
+                            <div class="bir_wrap row">
+                                <label class="form-label mt-4">생년월일</label>
+                                <div class="bir_yy col-4">
+                                    <span class="ps_box">
+                                        <input type="text" class="form-control col-sm" id="yy" placeholder="년(4자)" maxlength="4">
+                                    </span>
+                                </div>
+                                <div class="bir_mm col-4">
+                                    <span class="ps_box focus">
+                                        <select class="form-select col-sm" id="mm">
+                                         <option selected disabled hidden>월</option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                            <option>6</option>
+                                            <option>7</option>
+                                            <option>8</option>
+                                            <option>9</option>
+                                            <option>10</option>
+                                            <option>11</option>
+                                            <option>12</option>
+                                        </select>
+                                    </span>
+                                </div>
+                                
+                                <div class="bir_dd col-4">
+                                    <span class="ps_box">
+                                        <input type="text" class="form-control col-sm" id="dd" placeholder="일" maxlength="2">
+                                    </span>    
+                                </div>
+                            </div>
+                            <!-- 성별, 성별 input 영역 -->
+                            <div class="form-group">
+                                <label for="exampleSelect1" class="form-label mt-4">성별</label>
+                                <select class="form-select" id="exampleSelect1">
+                                    <option value='성별 선택하세요' selected disabled hidden></option>
+                                    <option>남자</option>
+                                    <option>여자</option>
+                                    <option>선택안함</option>
+                                </select>
+                            </div>
+                            <!-- 본인 확인 이메일, 본인 확인 이메일 input 영역 -->
+                            <div class="form-group">
+                                <label for="exampleInputEmail1" class="form-label mt-4">본인 확인 이메일</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="선택입력">
+                            </div>
+                            <!-- 연락처, 연락처 input 영역 -->
+                            <div class="form-group">
+                                <label for="my_pnumber" class="form-label mt-4">연락처</label>
+                                <input type="text" class="form-control" id="phoneNum" onkeyup="inputPhoneNumber(this);" name="my_pnumber" maxlength="13" placeholder="휴대번호">
+                            </div>
+                            <!-- 가입하기 button 영역 -->
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-danger btn-block my-button" type="button">가입하기</button>
+                            </div>
+                        </form>
+                    </div>
+            </section>
+            <!-- 부트스트랩 5.0 JavaScript 플러그인과 의존성을 한 번에 포함 -->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+        </body>
+</html>

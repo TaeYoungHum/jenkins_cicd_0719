@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    
+        <div id="fileInputs">
+            <input type="file" class="image-input" name="images" multiple><br><br>
+            <P>mrd</P>
+             <input type="file" class="image-input" name="images" multiple><br><br>
+             <P>mrd</P>
+              <input type="file" class="image-input" name="images" multiple><br><br>
+               <input type="file" class="image-input" name="images" multiple><br><br>
+                <input type="file" class="image-input" name="images" multiple><br><br>
+        </div>
+        <button id="addInputBtn">추가</button>
+        <button id="uploadBtn">업로드</button>
+  
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+            var addInputBtn = document.getElementById("addInputBtn");
+            addInputBtn.addEventListener("click", function () {
+                var fileInput = document.createElement("input");
+                fileInput.setAttribute("type", "file");
+                fileInput.setAttribute("class", "image-input");
+                fileInput.setAttribute("name", "images");
+                fileInput.setAttribute("multiple", "");
+
+                var br = document.createElement("br");
+
+                var fileInputs = document.getElementById("fileInputs");
+                fileInputs.appendChild(fileInput);
+                fileInputs.appendChild(br);
+            });
+
+            var uploadBtn = document.getElementById("uploadBtn");
+            uploadBtn.addEventListener("click", function () {
+                var formData = new FormData();
+                var files = document.getElementsByClassName("image-input");
+                for (var i = 0; i < files.length; i++) {
+                    var fileInput = files[i];
+                    var selectedFiles = fileInput.files;
+                    for (var j = 0; j < selectedFiles.length; j++) {
+                        formData.append("images", selectedFiles[j]);
+                    }
+                }
+
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "/rest/checkupdate");
+                xhr.onload = function () {
+                    if (xhr.status === 200) {
+                        alert("파일 업로드가 완료되었습니다.");
+                    } else {
+                        alert("파일 업로드에 실패하였습니다.");
+                    }
+                };
+                xhr.send(formData);
+            });
+        });
+    </script>
+</body>
+
+</html>

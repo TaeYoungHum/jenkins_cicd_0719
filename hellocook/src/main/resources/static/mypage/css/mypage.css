@@ -1,0 +1,357 @@
+
+
+*{
+  margin: 0;
+  padding: 0;
+  
+}
+/* 전체에 margin0, padding0 주면 여백이 남지 않는다 그렇지만 스크롤바가 안보인다 */
+body{
+  display: block;
+  overflow: scroll
+  
+}
+
+html{
+  word-break: keep-all;
+}
+
+div {
+  display: block;
+}
+
+li{
+  list-style:none;
+}
+
+.myatag{
+  color: #000000;
+  text-decoration: none;
+}
+
+
+.top-header{
+  position: relative;
+  width: 100%;
+  min-width: 1300px;
+  height: 120px;
+  box-sizing: border-box;
+  background:linear-gradient(to right, #bf132b, #f64646);
+  text-align: left;  
+}
+
+
+/* 여기서부터 bord 양식 */
+
+.outboard{
+  background-color: rgb(235, 234, 234);
+  height: 1300px;
+  color: black;
+  text-align: center;
+  font-size: 25px;
+  margin: 20;
+}
+
+.menubutton{
+ 
+  padding: 21px 21px 0;
+  background-color: #bf132b;
+  width: auto;
+  left: 240px;
+  overflow: hidden;
+  margin-top: 20px; 
+}
+
+
+.secmenu{
+  
+  width: 1200px;
+  background-color: #bf132b;
+  left: -21px;
+  position: relative;
+}
+
+
+
+/* 여기부터 프로필양식 */
+
+
+
+
+.profile {
+  width: 17%; /* 초기 너비 설정 */
+  margin: 0 auto; /* 가운데 정렬 */
+  text-align: center; /* 내용 가운데 정렬 */
+  background:linear-gradient(to right, #bf132b, #f64646);
+  position: absolute;
+  top: 210px;
+  right: 80px;
+  bottom: 50px;
+
+}
+
+@media (max-width: 600px) {
+  /* 화면 너비가 600px 이하일 때 스타일을 변경 */
+  .profile {
+    width: 100%; /* 너비 100%로 설정 */
+  }
+}
+
+.side-box {
+    width: 100%;
+    height: 1000px;
+    border-radius: 30%;
+    overflow: hidden;
+    text-align: center;
+   
+}
+.profile-picture {
+  margin: 65px;
+  width: auto;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 70%;
+  overflow: hidden;
+  
+}
+
+
+
+.content {
+margin: 20px;
+position: absolute;
+top: 40%;
+left: 50px;
+line-height: 1.5;
+}
+.content>p{
+margin-top: 5px;
+font-family: "Noto Sans Kr";
+font-size: 18px;
+}
+
+
+/* 여기부터 메인 보드 */
+.mainboard{
+  background-color: white;
+  text-align: center;
+  width: 1200px;
+  position: relative;
+  left: 240px;
+  bottom: 1200px;
+  height: 800px;
+}
+
+
+
+
+
+
+/* 보드 이미지관련 */
+.main-img1{
+  width: 300px;
+  height: 300px;
+}
+
+/* 서브버튼쪽css */
+
+
+/* 메인메뉴바  */
+.dropdown{
+  background-color: white;
+  height: 25px;
+  margin: 15px;
+}
+
+/* 밑에 타이틀 조절 */
+
+.bottom-tit{
+  font-size: 25px;
+  color: black;
+
+}
+
+.dropdown-item2{
+  text-decoration: none;
+}
+
+.dropdown-item3{
+  text-decoration: none;
+}
+
+.addbutton:hover{
+  background-color: #bf132b;
+  color: white;
+  width: 280px;
+  height: 45px;
+  transition-delay: .3s;
+}
+
+.info-name{
+  font-size: 18px;
+  display: block                ;
+}
+
+/* 위 상단 css 일단 logo부터 */
+
+
+.logo{
+  color: white;
+
+}
+
+/* 바텀검색창  */
+.buttom-srh{
+  width: 380px;
+  position: relative;
+  left: 655px;
+  bottom: 1525px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+
+}
+
+/* 아래 sch에서 버튼관련 css */
+
+
+
+.buttom-button{
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  margin-right:-4px;
+  margin-right:-4px;
+  width: 35px;
+  height: 35px;
+  position: relative;
+  left: 655px;
+  bottom: 1525px;
+  border: 1px solid #ccc;
+}
+
+
+
+/* 레시피등록 */
+
+
+/* 프로필 박스쪽 배경이미지 */
+.profile-box {
+  width: 255px;
+  height: 150px;
+  background: #ffffff;
+  border-radius: 20px;
+ 
+  left: 30px;
+  top: 50px;
+  } 
+/* 이미지 말고 배경쪽 */
+.bg-profile-color{
+  width: 255px;
+  height: 320px;
+  background-color: white;
+  border-radius: 20px;
+  position: absolute;
+  left: 30px;
+  top: 50px;
+  
+}
+
+.profile-background{
+  width: 255px;
+  height: 150px;
+  background: #ffffff;
+  border-radius: 20px;
+  left: 0px;
+  top: 0px;
+}
+
+/*프로필 사진*/
+.profile002{
+  position: relative;
+  top: -50px;
+  width: 110px;
+  height: 110px;
+  border-radius: 50% 
+}
+
+/* 버튼쪽 css */
+/* 위에 메뉴쪽 버튼 수정  */
+
+.button1{
+  background-color: #ffffff;
+  color: black;
+  padding: 5px 20px;
+  border-radius: 15px;
+  border:none;
+
+  transition: 0.7s;
+}
+
+.button1:hover{
+  background-color: rgb(122, 15, 15);
+  color: white;
+  padding: 5px 20px;
+  border-radius: 15px;
+  border:none;
+
+  transition: 0.7s;
+}
+  
+
+
+
+/* 레시피 등록 버튼 */
+.addbutton{
+  background-color: white;
+  color: #000000;
+  width: 280px;
+  height: 45px;
+  border-radius: 30px;
+  position: relative;
+  top: 20px;
+  border:1px black;
+
+  transition: 0.7s;
+}
+
+.addbutton:hover{
+  background-color: #bf132b;
+  color: #000000;
+  width: 280px;
+  height: 45px;
+  border-radius: 30px;
+  position: relative;
+  top: 20px;
+  border:1px;
+  
+  transition: 0.7s;
+}
+
+
+/* 버튼위치 바꾸려 하는 상위 div쪽 */
+
+.subbutton{
+  position: relative;
+  bottom: 13px;
+
+}
+
+/* 실험  */
+
+.footer {
+  position: relative;
+  width: 100%;
+  min-width: 1300px;
+  display: block;
+  clear: both;
+  height: 20rem;
+  padding-bottom: 40px;
+
+}

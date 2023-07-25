@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <!-- 여기서부터 메뉴바(S) -->
+     <div id="gnb">
+        <!-- navbar -->
+        <div class="navbar navbar-default">
+
+            <!-- .nav-collapse -->
+            <div class="collapse navbar-collapse js-navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown mega-dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown"><i></i>카테고리<span
+                                class="glyphicon glyphicon-chevron-down pull-right"></span></a>
+
+                        <ul class="dropdown-menu mega-dropdown-menu row">
+                            <li class="col01">
+                                <ul>
+                                    <!--<li class="dropdown-header"><a th:href="../category/cate_index.asp">카테고리</a></li>-->
+
+                                    <li><a th:href="@{/mrd/subpage}">종류</a></li>
+
+                                    <li><a th:href="@{/mrd/subpage}">재료</a></li>
+
+                                    <li><a th:href="@{/mrd/subpage}">방법</a></li>
+
+                                    <li><a th:href="@{/mrd/subpage}">테마</a></li>
+
+                                    <li><a th:href="@{/mrd/subpage}">가격대별</a></li>
+
+                                </ul>
+                            </li>
+
+
+                            <li class="col02">
+                                <ul>
+                                    <!--<li class="dropdown-header"><a href="#">인기 레시피</a></li>-->
+
+                                    <li><a th:href="@{/mrd/subpage}">#일식</a></li>
+
+                                    <li><a th:href="@{/mrd/subpage}">#중식</a></li>
+
+                                    <li><a th:href="@{/mrd/subpage}">#한식</a></li>
+
+                                    <li><a th:href="@{/mrd/subpage}">#추천</a></li>
+
+                                    <li><a th:href="@{/mrd/subpage}">#집밥</a></li>
+
+                                    <li><a th:href="@{/mrd/subpage}">#취향존중</a></li>
+
+                                    <li><a th:href="@{/mrd/subpage}">#볶음밥</a></li>
+
+                                </ul>
+                            </li>
+
+
+                            <li class="row01"><a th:href="@{/mrd/subpage}"><i></i>카테고리 전체보기</a></li>
+                        </ul>
+
+                    </li>
+                    <li><a th:href="@{/mrd/subpage}">인기&nbsp;레시피</a></li>
+                    <!--<li><a th:href="../category/videoList.asp">영상 레시피</a></li>-->
+                    <li class="after01"><a th:href="@{/mrd/subpage}">신규&nbsp;레시피</a></li>
+                </ul>
+
+            </div>
+            <!-- /.nav-collapse -->
+            <div class="nav_right">
+                <ul>
+                    <li><a th:href="@{/mrd/subpage}" class="c_red">최근 본 레시피</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- navbar -->
+    </div>
+    <!-- 여기서부터 메뉴바(E) -->
+</body>
+</html>

@@ -1,0 +1,9 @@
+.footer{position: relative; width:100%;min-width: 1300px; display: block; clear: both; padding-bottom: 40px; background: hsl(33, 37, 41);}
+#btn_top{position: fixed; right:10px; bottom:20px; z-index: 6;}
+
+#footer .f_info{display: table; margin-top:38px;}
+#footer .f_info_left{float: left; width:70%; color: #fff;line-height:1.2 !important;}
+#footer .f_info_left h3{font-size: 16px; margin-bottom: 5px;}
+#footer .f_info_left span{font-size: 14px;margin-right:10px; }
+#footer .f_info_left .copy{display: block; margin-top:20px;}
+

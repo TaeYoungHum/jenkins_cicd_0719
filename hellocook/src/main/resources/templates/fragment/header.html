@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>header</title>
+
+</head>
+
+<body>
+
+	<header th:fragment="headerFragment" class="p-3 text-bg-dark" style="position: relative; z-index: 100;">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+			integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+		<link rel="stylesheet" th:href="@{/fragment/css/sidebars.css}">
+		<style>
+			#imgs_cook {
+				 width: 300px;
+				 margin-right: 10px;
+				 border-radius: 10px 10px 10px 10px;
+			}
+			
+			#button-addon2 {
+				border-radius: 5px 5px 5px 5px;
+				margin-right: 5px;
+			}
+			
+			#toggleButton_deepimg {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				width: 59px; 
+				height: 40.39px;
+			}
+			
+			.bi me-2{
+				position: absolute;
+				top: 50%; /* 위에서 50% 위치로 이동하여 수직 가운데 정렬 */
+  				left: 50%; /* 왼쪽에서 50% 위치로 이동하여 수평 가운데 정렬 */
+  				transform: translate(-50%, -50%); /* 이미지의 중심을 기준으로 50%만큼 이동하여 정확한 가운데 정렬 */
+  				width: 100%; /* 이미지의 가로 크기 */
+  				height: auto; /* 이미지의 세로 크기를 가로 비율에 맞춤 */
+			}
+			
+			.sidebar {
+				/* 사이드바 스타일 */
+				/* 초기에는 display: none;으로 숨겨진 상태로 설정 */
+				display: none;
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 250px;
+				height: 100vh;
+				/* 화면 세로 전체 높이에 맞게 설정 */
+				background-color: #f5f5f5;
+			}
+
+			/* 사이드바가 표시되는 경우에만 오버레이를 표시하여 나머지 콘텐츠를 가리도록 설정 */
+			.sidebar.active {
+				display: block;
+			}
+
+			.overlay {
+				/* 오버레이 스타일 */
+				/* 사이드바가 표시될 때만 표시되도록 설정 */
+				display: none;
+			}
+
+			.overlay.active {
+				display: block;
+			}
+
+			/* 이미지 판별 [s] */
+			.form_deepimg {
+				/* 사이드바 스타일 */
+				/* 초기에는 display: none;으로 숨겨진 상태로 설정 */
+				display: none;
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 250px;
+				height: 100vh;
+				/* 화면 세로 전체 높이에 맞게 설정 */
+				background-color: #f5f5f5;
+			}
+
+			/* 사이드바가 표시되는 경우에만 오버레이를 표시하여 나머지 콘텐츠를 가리도록 설정 */
+			.form_deepimg.active {
+				display: block;
+			}
+
+			.overlayimgform {
+				/* 오버레이 스타일 */
+				/* 사이드바가 표시될 때만 표시되도록 설정 */
+				display: none;
+			}
+
+			.overlayimgform.active {
+				display: block;
+			}
+
+			/* 이미지 판별 [e] */
+		</style>
+
+		<div class="container ">
+			<div class="d-flex flex-wrap align-items-center justify-content-between">
+				<button id="toggleButton" class="toggle-button btn btn-dark" type="button" aria-expanded="false">
+					<img class="bi me-2" width="25" height="25" role="img" aria-label="Bootstrap"
+						th:src="@{/fragment/imgfile/button/hamburgerbutton.png}" />
+					<span>메뉴</span>
+				</button>
+
+				<div class="d-flex justify-content-center">
+					<a th:href="@{/}"
+						class="d-flex align-items-center mb-3 mb-lg-0 text-white text-decoration-none">
+						<img class="bi me-2" width="40" height="40" role="img" aria-label="Bootstrap"
+							th:src="@{/fragment/imgfile/logo/logopurple.png}" />
+					</a>
+					<form method="get" th:action="@{/mrd/ajax}">
+						<div class="input-group d-flex justify-content-center col-12 col-lg-12 mb-3 mb-lg-0 me-lg-3">
+							<input type="text" id="imgs_cook" name="cookName"
+								class="form-control form-control-dark text-bg-dark" maxlength="30"
+								placeholder="요리명을 다양하게 검색해보세요!" value="" aria-label="Search" />
+							<button class="btn btn-outline-secondary" type="submit" id="button-addon2" alt="search">
+								<img class="bi me-2" width="25" height="25" role="img" aria-label="Bootstrap"
+									th:src="@{/fragment/imgfile/button/top_sch.png}" />
+							</button>
+						</div>
+					</form>
+					<button id="toggleButton_deepimg" class="btn btn-outline-secondary btn-warning" type="button"
+						alt="imgsearch">
+						<img class="bi me-2" width="50" height="50" role="img" aria-label="Bootstrap"
+							th:src="@{/fragment/imgfile/button/ai.png}" />					
+					</button>
+				</div>
+
+				<div class="text-end">
+					<!--
+						<a th:href="@{/mrd/signup}"><button type="button" class="btn btn-warning">Sign-up</button></a>
+						<a th:href="@{/mrd/login}"><button type="button"
+							class="btn btn-outline-light me-2">Login</button></a>
+					-->
+				</div>
+			</div>
+		</div>
+
+		<!-- 이미지 판별기 [s] -->
+		<form method="post" id="form_deepimg" class="form_deepimg" action="" enctype="multipart/form-data">
+			<div class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+				<button id="deepImgClose" class="btn btn-close" type="button" onclick="closeImgbtn()" alt="close">
+				</button>
+			</div>
+			<div style="vertical-align: top;">
+				<div><img width="150" height="150" class="fimg" style="visibility: hidden;"></div>
+				<div>
+					<!-- <input type="text" id="imgs_cook" value="결과값 출력 되는 부분 " /> -->
+					<input type="file" name="uploadfile" multiple="multiple" onchange="loadimg(event);" />
+					<!-- <input type="button" value="보내기"  /> -->
+					<button id="toggleButton_deepimg" class="btn btn-outline-secondary btn-warning" type="button"
+						alt="imgsearch" onclick="getImges()">
+						<img class="bi me-2" width="25" height="25" role="img" aria-label="Bootstrap"
+							th:src="@{/fragment/imgfile/button/top_sch.png}" />
+					</button>
+				</div>
+			</div>
+		</form>
+		<!-- 이미지 판별기 [e] -->
+
+
+
+
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+			crossorigin="anonymous"></script>
+
+
+		<!-- 사이드바 -->
+
+		<div id="sidebar" class="sidebar">
+			<div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
+				<div class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+					<button id="sidebarClose" class="btn btn-close" type="button" onclick="closeSidebar()" alt="close">
+					</button>
+				</div>
+				<ul class="list-unstyled ps-0">
+					<li class="mb-1">
+						<button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+							data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+							메뉴
+						</button>
+						<div class="collapse show" id="home-collapse">
+							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+								<li><a th:href="@{/mrd/subpage}"
+										class="link-dark d-inline-flex text-decoration-none rounded">subpage</a>
+								</li>
+							</ul>
+						</div>
+					</li>
+					<li class="mb-1">
+						<button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+							data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+							Dashboard
+						</button>
+						<div class="collapse" id="dashboard-collapse">
+							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+								<li><a th:href="@{/mrd/recipeboard2}"
+										class="link-dark d-inline-flex text-decoration-none rounded">레시피 작성</a>
+								</li>
+							</ul>
+						</div>
+					</li>
+					<li class="mb-1">
+						<button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+							data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+							Programmer
+						</button>
+						<div class="collapse" id="orders-collapse">
+							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+								<li><a th:href="@{/}"
+										class="link-dark d-inline-flex text-decoration-none rounded">김태영</a></li>
+								<li><a th:href="@{/}"
+										class="link-dark d-inline-flex text-decoration-none rounded">박동현</a>
+								</li>
+								<li><a th:href="@{/}"
+										class="link-dark d-inline-flex text-decoration-none rounded">윤제현</a>
+								</li>
+								<li><a th:href="@{/}"
+										class="link-dark d-inline-flex text-decoration-none rounded">정기훈</a>
+								</li>
+								<li><a th:href="@{/}"
+										class="link-dark d-inline-flex text-decoration-none rounded">최용준</a>
+								</li>
+							</ul>
+						</div>
+					</li>
+					<li class="border-top my-3"></li>
+					<li class="mb-1">
+						<button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+							data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
+							Account
+						</button>
+						<div class="collapse" id="account-collapse">
+							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+								<li><a th:href="@{/mrd/signup}"
+										class="link-dark d-inline-flex text-decoration-none rounded">Sign up</a></li>
+								<li><a th:href="@{/mrd/mypage}"
+										class="link-dark d-inline-flex text-decoration-none rounded">My page</a></li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!-- 사이드바 끝 -->
+		<script>
+			const sidebar = document.getElementById('sidebar');
+			const toggleButton = document.getElementById('toggleButton');
+			const overlay = document.querySelector('.overlay');
+			let isSidebarOpen = false;
+
+			function toggleSidebar() {
+				isSidebarOpen = !isSidebarOpen;
+				sidebar.classList.toggle('active', isSidebarOpen);
+				overlay.classList.toggle('active', isSidebarOpen);
+			}
+
+			function closeSidebar() {
+				isSidebarOpen = false;
+				sidebar.classList.remove('active');
+				overlay.classList.remove('active');
+			}
+
+			toggleButton.addEventListener('click', toggleSidebar);
+			document.querySelector('#sidebarClose').addEventListener('click', closeSidebar);
+
+			// 이미지 판별기 [s]
+			const form_deepimg = document.getElementById('form_deepimg');
+			const toggleButton_deepimg = document.getElementById('toggleButton_deepimg');
+			const overlayimgform = document.querySelector('.overlayimgform');
+			let isDeepImgOpen = false;
+
+			function toggleImgbtn() {
+				isDeepImgOpen = !isDeepImgOpen;
+				form_deepimg.classList.toggle('active', isDeepImgOpen);
+				overlayimgform.classList.toggle('active', isDeepImgOpen);
+			}
+			function closeImgbtn() {
+				isDeepImgOpen = false;
+				form_deepimgs.classList.remove('active');
+				overlayimgform.classList.remove('active');
+			}
+
+			toggleButton_deepimg.addEventListener('click', toggleImgbtn);
+			document.querySelector('#deepImgClose').addEventListener('click', closeImgbtn);
+
+			function loadimg(e) {
+				const board = document.querySelector('.fimg');
+				const file = e.currentTarget.files[0];
+				board.src = URL.createObjectURL(file);
+				board.style.visibility = 'visible';
+			}
+
+			async function getImges() {
+				let formData = new FormData(form_deepimg);
+
+				const options = {
+					method: "post",
+					body: formData
+				}
+
+				try {
+					let response = await fetch("[[@{/rest/uploadfile}]]", options);
+					//await 동기화 방식으로해야함
+
+					let catdogchang = await response.json();
+					//response는 json 파일로 컨버전해서 준다
+					let tag_img = document.getElementById('imgs_cook');
+					//let tag_img = document.querySelector('#imgs_cook');
+
+					tag_img.value = catdogchang.FoodParsing_data;
+					
+					// 결과값 나오면 자동으로 버튼 누름 
+					document.getElementById('button-addon2').click();
+				} catch (err) {
+					alert(err);
+				}
+				//await 동기화 방식으로해야함
+			}
+			// 이미지 판별기 [e]
+			
+		</script>
+	</header>
+	<div>
+		<h1>Hello!!!!</h1>
+		<h1>Hello!!!!</h1>
+		<h1>Hello!!!!</h1>
+		<h1>Hello!!!!</h1>
+		<h1>Hello!!!!</h1>
+	</div>
+</body>
+
+</html>

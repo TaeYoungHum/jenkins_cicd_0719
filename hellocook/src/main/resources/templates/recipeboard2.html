@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/recipeboard/css/boardstyle.css}">
+    <title>게시판</title>
+</head>
+<body>
+  <!-- 화이트 영역이 4개로 나누어져 있어서 위에 순으로 첫 번째, 두 번째, 세 번째, 네 번째 -->
+  <!-- 첫 번째 상단 [s] -->
+  <div class="container">
+    
+    <!-- 첫 번째 내용물 [s] -->
+    <div class="container top mt-5">
+      <div class="public-top">
+        <div class="row mb-2">
+          <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm m-1 title">레시피 제목</label>
+          <div class="col">
+            <input type="text" class="form-control form-control-sm" id="colFormLabelSm" placeholder="레시피 제목을 입력해주세요." value="">
+          </div>
+          <div class="cook-photo1">
+            <picture>
+              <source srcset="..." type="image/svg+xml">
+              <img src="..." class="rounded float-end" alt="...">
+            </picture>
+          </div>
+        </div>
+
+        <div class="row mb-2">
+          <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm m-1 intro">요리소개</label>
+          <div class="col">
+            <textarea name="introduce" class="form-control" id="exampleFormControlTextarea1" placeholder="요리 소개를 해주세요." rows="4"></textarea>
+          </div>
+        </div>
+
+        <div class="row mb-2">
+          <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm m-1 tag">태그 입력</label>
+          <div class="col">
+            <input name="tags" type="text" class="form-control form-control-sm" placeholder="#태그 입력해주세요.">
+          </div>
+        </div>
+
+        <div class="category-button">
+          <div class="btn-group">
+            <div class="category1">
+              <span class="category">카테고리</span>
+            </div>  
+            <button name="ByType" class="btn btn-outline-secondary dropdown-toggle rounded" type="button" data-bs-toggle="dropdown" aria-expanded="false">종류별</button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#" onclick="selectCategory1('a')">a</a></li>
+              <li><a class="dropdown-item" href="#" onclick="selectCategory1('b')">b</a></li>
+              <li><a class="dropdown-item" href="#" onclick="selectCategory1('c')">c</a></li>
+            </ul>
+            <script>
+              let selectCategory_1 = ""; //global variable
+              function selectCategory1(category) {
+              // 선택된 메뉴를 변수에 저장 또는 다른 로직 처리
+                selectCategory_1 = category;
+                
+                
+              }
+
+              let ByType_putIn = document.getElementsByName("ByType")[0];
+              
+              ByType_putIn.addEventListener("click", function() {
+                ByType_putIn.textContent = selectCategory_1
+
+              }
+              );
+              
+              
+
+            </script>
+
+
+
+          </div>  
+          
+          <div class="btn-group">
+            <button class="btn btn-outline-secondary dropdown-toggle rounded" type="button" data-bs-toggle="dropdown" aria-expanded="false">상황별</button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#" onclick="selectCategory2('d')">d</a></li>
+              <li><a class="dropdown-item" href="#" onclick="selectCategory2('e')">e</a></li>
+              <li><a class="dropdown-item" href="#" onclick="selectCategory2('f')">f</a></li>
+            </ul>
+            <script>
+              let selectCategory_2 = ""; //global variable
+              function selectCategory2(category) {
+              // 선택된 메뉴를 변수에 저장 또는 다른 로직 처리
+                selectCategory_2 = category;
+              }
+              
+
+            </script>
+
+          </div>
+
+          
+          <div class="btn-group">
+            <button class="btn btn-outline-secondary dropdown-toggle rounded" type="button" data-bs-toggle="dropdown" aria-expanded="false">방법별</button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#" onclick="selectCategory3('g')">g</a></li>
+              <li><a class="dropdown-item" href="#" onclick="selectCategory3('h')">h</a></li>
+              <li><a class="dropdown-item" href="#" onclick="selectCategory3('i')">i</a></li>
+            </ul>
+            <script>
+              let selectCategory_3 = ""; //global variable
+              function selectCategory3(category) {
+              // 선택된 메뉴를 변수에 저장 또는 다른 로직 처리
+                selectCategory_3 = category;
+              }
+              
+
+            </script>
+
+          </div>
+              
+          <div class="btn-group">
+            <button class="btn btn-outline-secondary dropdown-toggle rounded" type="button" data-bs-toggle="dropdown" aria-expanded="false">재료별</button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#" onclick="selectCategory4('j')">j</a></li>
+              <li><a class="dropdown-item" href="#" onclick="selectCategory4('k')">k</a></li>
+              <li><a class="dropdown-item" href="#" onclick="selectCategory4('l')">l</a></li>
+
+            </ul>
+            <script>
+              let selectCategory_4 = ""; //global variable
+              function selectCategory4(category) {
+              // 선택된 메뉴를 변수에 저장 또는 다른 로직 처리
+                selectCategory_4 = category;
+              }
+              
+
+            </script>
+
+          </div>
+        </div>
+      </div>
+      <br>
+
+      <div class="summary-button">
+        <div class="btn-group">
+          <span class="category2">요약정보</span>
+          <span class="category2-1">인원</span>
+          <button class="btn btn-outline-secondary dropdown-toggle rounded" type="button" data-bs-toggle="dropdown" aria-expanded="false">인원</button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#" onclick="selectPeople('1')">1</a></li>
+            <li><a class="dropdown-item" href="#" onclick="selectPeople('2')">2</a></li>
+            <li><a class="dropdown-item" href="#" onclick="selectPeople('3')">3</a></li>
+          </ul>
+          <script>
+            let number_of_people = ""; //global variable
+            function selectPeople(people) {
+            // 선택된 메뉴를 변수에 저장 또는 다른 로직 처리
+            number_of_people = people;
+            }
+            
+
+          </script>  
+        </div>
+
+        <div class="btn-group">
+          <span class="category2-2">준비시간</span>
+          <button class="btn btn-outline-secondary dropdown-toggle rounded" type="button" data-bs-toggle="dropdown" aria-expanded="false">시간</button>
+          <ul class="dropdown-menu">
+            
+            <li><a class="dropdown-item" href="#" onclick="selectPreparationTime('7')">7</a></li>
+            <li><a class="dropdown-item" href="#" onclick="selectPreparationTime('8')">8</a></li>
+            <li><a class="dropdown-item" href="#" onclick="selectPreparationTime('9')">9</a></li>
+          </ul>
+        
+          <script>
+            let preparation_time = ""; //global variable
+            function selectPreparationTime(preparationTime) {
+            // 선택된 메뉴를 변수에 저장 또는 다른 로직 처리
+            preparation_time = preparationTime;
+            }
+            
+
+          </script>
+
+        </div>
+          
+        <div class="btn-group">
+          <span class="category2-3">조리시간</span>
+          <button class="btn btn-outline-secondary dropdown-toggle rounded" type="button" data-bs-toggle="dropdown" aria-expanded="false">시간</button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#" onclick="selectCookTime('4')">4</a></li>
+            <li><a class="dropdown-item" href="#" onclick="selectCookTime('5')">5</a></li>
+            <li><a class="dropdown-item" href="#" onclick="selectCookTime('6')">6</a></li>
+          </ul>
+          <script>
+            let cook_time = ""; //global variable
+            function selectCookTime(cookTime) {
+            // 선택된 메뉴를 변수에 저장 또는 다른 로직 처리
+            cook_time = cookTime;
+            }
+            
+
+          </script>
+        </div>
+      </div>
+    </div>
+    <!-- 첫 번째 내용물 [e] -->
+  </div>
+  <!-- 첫 번째 [e] -->
+
+  <!-- 두 번째 [s] -->
+  <div class="container middle">
+    <!-- 추가 버튼 까지 포함 [s] -->
+    <div class="middle1">
+      <div class="fs-4 mb-3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-lightbulb" viewBox="0 0 16 16">
+          <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z"></path>
+        </svg>
+        <span class="middle1-hangul">재료가 남거나 부족하지 않도록 정확한 계량정보를 적어주세요.</span>
+      </div>
+
+      <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 m-1">
+        <div class="input-group middle-input1">
+          <button type="button" class="btn btn-warning btn-lg w-25 rounded">재료</button>
+          <input name="Product" type="text" aria-label="Product name" class="form-control ms-2 rounded" placeholder="예) 돼지고기" value="">
+          <input name="Grams" type="text" aria-label="Grams" class="form-control ms-2 rounded" placeholder="예) 300g" value="">
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"></path>
+          </svg>
+        </div>
+      </div>
+
+      <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 m-1">
+        <div class="input-group middle-input2">
+          <button type="button" class="btn btn-secondary w-25 rounded">묶음 삭제</button>
+          <input type="text" aria-label="Product name" class="form-control ms-2 rounded" placeholder="예) 양배추">
+          <input type="text" aria-label="Grams" class="form-control ms-2 rounded" placeholder="예) 1/2개">
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"></path>
+          </svg>
+        </div>
+      </div>
+
+      <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 m-1">
+        <div class="input-group middle-input3">
+          <input type="text" aria-label="Material" class="form-control ms-2 rounded" placeholder="예) 참기름">
+          <input type="text" aria-label="Product name" class="form-control ms-2 rounded" placeholder="예) 1T">
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"></path>
+          </svg>
+        </div>
+      </div>
+
+      <div class="d-grid mx-auto">
+        <button type="button" class="w-25 btn btn-success mx-auto m-5">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"></path>
+          </svg>
+          추가
+        </button>
+        
+      </div>
+    </div>
+    <!-- 추가 버튼 까지 포함 [e] -->
+    <hr>
+
+    <div class="hangul"> ※ 양념, 양념장, 소스, 드레싱, 토핑, 시럽, 육수, 밑간 등으로 구분해서 작성해주세요.</div>
+    <div class="d-grid gap-1 col-3 mx-auto">
+      <button class="btn btn-secondary m-4" type="button">+재료 / 양념 묶음 추가</button>
+    </div>
+  </div> 
+  <!-- 두 번째 [e] -->
+
+  <!-- 세 번째 [s] -->
+  <div class="container bottom1">
+    <!-- 세 번째 내용물 [s] -->
+    <div class="bottom1-1">
+        <div class="bottom-hangul">요리순서</div>
+        <div class="fs-4 mb-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-lightbulb" viewBox="0 0 16 16">
+                <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z"></path>
+            </svg>
+            <span class="bottom-hangul1">요리의 맛이 좌우될 수 있는 중요한 부분은 빠짐없이 적어주세요.</span>
+        </div>
+
+        <div id="divStepArea" class="divStepArea">
+          <div  id="divStepTemplate" class="row mb-3">
+              <label id="divStepItem_" name="stepCounter" for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm my-cook">Step1</label>
+              <div class="col-sm-6">
+                  <label for="exampleFormControlTextarea1" class="form-label"></label>
+                  <textarea class="form-control" name="recipeText" placeholder="요리 과정을 작성해주세요." rows="7"></textarea> <!-- id="recipeText_1" -->
+              </div>
+              <div class="cook-photo2">
+                  <picture>
+                      <source srcset="..." type="image/svg+xml">
+                      <img src="..." class="img-flu id img-thumbnail" alt="...">
+                  </picture>
+              </div>
+          </div>
+      </div>
+      
+        <button id="addStepButton" class="btn btn-primary" onclick="addStep()">단계 추가</button>
+            
+          <script>
+            
+            let step_info;
+            let 
+
+            function addStep() {
+
+              step_info = document.getElementsByName("stepCounter").length; // 길이로 현재 step 체크
+              step_info_next = step_info +1;
+              let divStepArea = document.getElementById("divStepArea");
+              let divStepTemplate = document.getElementById("divStepTemplate"); // id로 찝고
+              
+              let clone = divStepTemplate.cloneNode(true); //.cloneNode(true) 하면 자식 노드들도 같이 복사
+
+              let idCounter = document.getElementsByName("stepCounter").length + 1; //int
+              clone.id = "divStepItem_" + idCounter;
+              
+              var stepCounter = clone.querySelector("label[name=stepCounter]")
+              stepCounter.textContent = "Step" + idCounter;
+
+              // let textarea = clone.querySelector("textarea[name=recipeText]");
+              // textarea.name = "recipeText_" + idCounter;
+
+              let image = clone.querySelector("img");
+              image.src = "이미지_경로_수정";
+              
+
+
+              divStepArea.insertBefore(clone, document.getElementById("addButton")); //이걸로 버튼을 계속 아래에 생성
+              //divStepArea.parentNode.appendChild(clone);
+
+
+
+            }
+
+
+          </script>
+      </div>
+
+    
+    </div>
+    <!-- 세 번째 내용물 [e] -->
+  <!-- 세 번째 [e] -->
+  
+  <!-- 네 번째 [s] -->
+  <div class="container bottom2">
+    <div class="d-flex justify-content-between">
+      <button onclick="gocheckupdate()" class="btn btn-success bottom2-button1" type="button">저장</button>
+      <button class="btn btn-secondary bottom2-button2" type="button">취소</button>
+    </div>
+  </div>
+  
+  <script th:inline="javascript">
+	  
+  let contextPath = /*[[@{/}]]*/ '/';
+  let outLocalContextPath = /*[[@{/upload/}]]*/ '/upload/';
+	  
+    function gocheckupdate() {
+      //1. 레시피 제목(음식 이름) -> CookTitle
+      let CookTitle = document.getElementById("colFormLabelSm").value;
+      //2. 요리소개 -> introduceCook
+      let introduceCook = document.getElementsByName("introduce")[0].value;
+      //3. 태그 -> tags
+      let tags = document.getElementsByName("tags")[0].value;
+      //4. 카테고리는. 리스트에서 골랐을때. 그 값이 저장되는 스크립트 같은게 필요할 것 같음.
+      //number_of_people, cook_time, preparation_time
+
+      //4.5
+      //selectCategory_1, selectCategory_2, selectCategory_3, selectCategory_4
+  
+      //5. 재료들
+      let products = [];
+      let grams = [];
+      let ingredients = [];
+  
+      for (var i = 0; i < document.getElementsByName("Product").length; i++) {
+        var trans = document.getElementsByName("Product")[i];
+        products.push(trans.value);
+      }
+  
+      for (var i = 0; i < document.getElementsByName("Grams").length; i++) {
+        var trans = document.getElementsByName("Grams")[i];
+        grams.push(trans.value);
+      }
+  
+      //6. 스탭과 조리과정
+      let recipeFullTexts = [];
+  
+      let stepCounterSize = document.getElementsByName("stepCounter").length;
+      let recipeTextSize = document.getElementsByName("recipeText").length;
+  
+      for (var i = 0; i < stepCounterSize; i++) {
+        //스텝
+        recipeFullTexts.push("Step" + (i + 1));
+        //레시피 글
+        var recipeText_trans = document.getElementsByName("recipeText")[i];
+        recipeFullTexts.push(recipeText_trans.value);
+      } // recipeFullTexts
+  
+      //최종 합치기
+      let obj = {
+        "CookTitle": CookTitle,
+        "introduceCook": introduceCook,
+        "tags": tags,
+        "selectCategory_1" : selectCategory_1,
+        "selectCategory_2" : selectCategory_2,
+        "selectCategory_3" : selectCategory_3,
+        "selectCategory_4" : selectCategory_4,
+        "number_of_people": number_of_people,
+        "cook_time": cook_time,
+        "preparation_time": preparation_time,
+        "products": products,
+        "grams": grams,
+        "recipeFullTexts": recipeFullTexts
+      };
+      
+      // alert(obj.CookTitle);
+      // alert(obj.introduceCook);
+      // alert(obj.tags);
+      // alert(obj.number_of_people);
+      // alert(obj.cook_time);
+      // alert(obj.preparation_time);
+      // alert(obj.products);
+      // alert(obj.grams);
+      // alert(obj.recipeFullTexts);
+
+
+
+      // AJAX로 POST 요청 보내기
+ 		
+      const boardurl = contextPath + 'rest/checkupdate'; //보드 url
+      
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', boardurl);
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.send(JSON.stringify(obj));
+  
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+          if (xhr.status === 200) {
+            console.log('Request succeeded');
+            const response = JSON.parse(xhr.responseText);
+            // 처리된 응답 데이터를 사용합니다.
+          } else {
+            console.log('Request failed');
+          }
+        }
+      }
+    }
+  </script>
+
+
+   
+  <!-- 네 번째 [e] -->
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+</body>
+</html>

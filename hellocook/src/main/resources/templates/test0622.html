@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!DOCTYPE html>
+    <link rel="stylesheet" th:href="@{/subpage/css/test0622.css}">
+</head>
+    <body>
+      <h1>이미지 페이지</h1>
+    
+      <div id="image-container" class="image-container">
+        <!-- 이미지가 동적으로 추가될 부분 -->
+      </div>
+    
+      <div id="pagination" class="pagination">
+        <!-- 페이지 버튼이 동적으로 추가될 부분 -->
+      </div>
+    
+      <script th:inline="javascript">
+        let contextPath = /*[[@{/}]]*/ '/';
+        let outLocalContextPath = /*[[@{/upload/}]]*/ '/upload/';
+        //model.addAttribute("RandomCookUids", RandomCookUids); // 이건 필요 없을 수도. 확인 후 삭제
+		    //model.addAttribute("RandomCookUids_size", RandomCookUids.size());
+		    //model.addAttribute("cookTableJpas_2", cookTableJpas_2); cookTableJpas_2 list
+		    //model.addAttribute("onlySubPageTagVos", onlySubPageTagVos); //cook이랑 1:1 인덱싱
+		    //model.addAttribute("CookuidSize", RandomCookUids.size() ); // CookuidSize = 12 
+
+        
+        // 이미지 리스트 (예시용)
+        var images = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+        //controller에서 변수 내려 받은거로 변수 초기화.
+        let getCookTables = []; //
+        getCookTables=/*[[${cookTableJpas_2}]]*/ []; //객체 배열
+        RandomCookUids_size= /*[[${RandomCookUids_size}]]*/ RandomCookUids_size;
+
+
+       
+        //음식 이름
+        let titleNames = [];
+
+        for(var i = 0 ; i<RandomCookUids_size; i++){
+          titleNames.push(getCookTables[i].cookTitle);
+
+        }
+
+        //음식 대표이미지 path
+        let imgpaths = [];
+        for(var i = 0 ; i<RandomCookUids_size; i++){
+          console.log(getCookTables[i].representativeCookImg);
+          imgpaths.push(getCookTables[i].representativeCookImg);
+
+        }
+
+
+        //tag 테이블 
+        let tagMobs = [];
+        tagMobs = /*[[${onlySubPageTagVos}]]*/ []; //tagMobs는 tag 뭉치들.
+        let tags = [];
+        for(var i = 0 ; i<RandomCookUids_size; i++){
+          
+          tags.push(tagMobs[i].tagTableJpas); 
+
+        }//tags 는 uid마다의 태그들.
+        
+
+        //// 아래는 음식 이름 + #1 #2 모양.
+        
+        
+
+        
+
+
+        //titleNames[i], 
+        var itemsPerRow = 4;  // 한 줄에 표시할 이미지 개수
+        var itemsPerColumn = 2;  // 세로로 표시할 줄 수
+        var itemsPerPage = itemsPerRow * itemsPerColumn;  // 페이지당 이미지 개수
+        var totalPages = Math.ceil(images.length / itemsPerPage);  // 전체 페이지 수 계산
+    
+        function showPage(page) {
+          var startIdx = (page - 1) * itemsPerPage;  // 시작 인덱스
+          var endIdx = page * itemsPerPage;  // 끝 인덱스
+
+          for(var i = startIdx ; i<RandomCookUids_size; i++){
+
+          console.log(i+titleNames[i]); 
+          for(var tag of tags[i]){
+
+          console.log(tag.tag_name);
+
+          }
+          } 
+
+
+
+    
+          var imageContainer = document.getElementById("image-container");
+          var pagination = document.getElementById("pagination");
+    
+          // 이미지 컨테이너 초기화
+          imageContainer.innerHTML = "";
+    
+          // 페이지에 해당하는 이미지 추가
+          images.slice(startIdx, endIdx).forEach(function(image) {
+          var imgElement = document.createElement("div");
+          imgElement.className = "image-item";
+          
+          var trans_String = "";
+          trans_String = trans_String+image+titleNames[image-1];
+          for(var tag of tags[image-1]){
+
+            trans_String = trans_String + " "+ tag.tag_name;
+          }
+
+
+          imgElement.textContent = trans_String;  // 이미지에 대한 적절한 내용을 추가해주세요.
+          
+          //이미지 태그 생성
+          var imgElement2 = document.createElement("img");
+          imgElement2.className = "image";
+          let s ="";
+          s=outLocalContextPath+imgpaths[image-1];
+          imgElement2.setAttribute("src",s);
+
+            
+            
+            imgElement.appendChild(imgElement2);
+
+            imageContainer.appendChild(imgElement);
+          });
+    
+          // 페이지 버튼 생성
+          pagination.innerHTML = "";
+          Array.from(Array(totalPages).keys()).forEach(function(index) {
+            var pageNumber = index + 1;
+            var pageButton = document.createElement("button");
+            pageButton.textContent = pageNumber;
+            pageButton.addEventListener("click", function (event) {
+              showPage(parseInt(event.target.textContent));
+            });
+            pagination.appendChild(pageButton);
+          });
+        }
+    
+        // 초기 페이지 로드
+        showPage(1);
+      </script>
+    </body>
+    </html>
+    

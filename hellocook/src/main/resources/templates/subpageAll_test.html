@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SubPage</title>
+
+    <!-- 서브페이지 css-->
+    <link rel="stylesheet" th:href="@{/subpage/css/subpageAll.css}">
+	<link rel="stylesheet" th:href="@{/search/css/style.css}">
+</head>
+
+<body style="margin: 0px; ">
+
+    <div th:replace="fragment/header :: header">-- thymeleaf header will be inserted here. --</div>
+    <div id="contents" style="margin: 0; padding: 0; ">
+        <!-- 여기서부터 해더 해더에는 로그인 , 검색, 카테고리(메뉴) 기능이 있다(S) -->
+
+ 
+
+        <div id="contents_2">
+
+            <div class="thmb_list02 pt90">
+                <h2><strong>전체 레시피</strong>에서 인기 많은</h2>
+            <div class="redline" style="border-color: #bf132b; border-style: solid; "></div>
+
+                <!-- 양식-->
+                <div class="list_area">
+                    <!-- cookTableJpas_2(List<cookTableJpa>), onlySubPageTagVos(List<onlySubPageTagVo> list), RandomCookUids(list<int>), RandomCookUids_size(int) down!-->
+                    <div th:each="cookTableJpa, index : ${cookTableJpas_2}">
+                        <div class="item" style="height: 496.5px; width: 305px;">
+                            <div class="thmb">
+                                <a th:href="@{/mrd/recipe?cookUid=}+${cookTableJpa.cook_uid}" style="text-decoration: none; font-size: 30px; color: black;">
+                                    <!-- get 방식으로 해당 레시피 페이지 이동하게. http://localhost:8080/mrd/recipe?cookUid=? 양식-->
+                                    <div class="img">
+                                        <div class="scale">
+
+                                            <img th:src="@{'/upload/' + ${cookTableJpa.representativeCookImg}}"
+                                                style="width: 305px; height: 215px; overflow: hidden;" alt="그림에러" />
+
+                                        </div>
+                                    </div>
+                                    [[${cookTableJpa.cookTitle}]]
+                                </a>
+                            </div>
+                            <!-- 아이콘 밑에 태그 와 래시피 사이트  (S) -->
+                            <div class="info">
+                                <div class="info_tag">
+                                    <div class="tag_name">
+                                        <div th:each="onlySubPageTagVo : ${onlySubPageTagVos[__${index.index}__]}">
+                                            <!-- [[${index.index}]] -->
+                                            <span th:each="tagTableJpa : ${onlySubPageTagVo.tagTableJpas}">
+                                                <a th:href="@{/mrd/ajax(cookName=${tagTableJpa.tag_name.substring(1)})}" style="text-decoration: none; color: black;">
+                                                    
+                                                        [[${tagTableJpa.tag_name}]]
+                                                  
+                                                </a>
+
+                                            </span>
+
+                                        </div>
+                                        <br>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script th:inline="javascript">
+                let contextPath = /*[[@{/}]]*/ '/';
+
+                function removeshap(tagName) {
+
+                    tagName.substring(1);
+                    window.location.href = contextPath + 'mrd/recipe?cookUid=' + tagName;
+
+                }
+
+
+            </script>
+
+            <!-- 레시피 리스트 (S) -->
+            <!-- 이 부분 반복 사용. 아니면 서버단에서 맞춰서 내려주던가.-->
+
+            <!-- 레시피 리스트(E) -->
+            <!-- 번호로 이동하는 밑에 스크립트 -->
+            <!-- <div class="paginate">
+                <img src="/static/subpageimg/subpageicon/left-arrow.png" class="arrow left" onclick="gopage('prev')" alt="이전 페이지로">
+                <a href="javascript:gopage(1)" class="active">1</a>
+                <a href="javascript:gopage(2)">2</a>
+                <img src="arrow_right.png" class="arrow right" onclick="gopage('next')" alt="다음 페이지로">
+            </div> -->
+
+        </div>
+
+	
+    </div>
+	<!-- btn top [s] -->
+	
+	 <script th:inline="javascript">
+        /*<![CDATA[*/
+        // 스크롤 이벤트 핸들러
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            var btnTop = document.getElementById("btn_top");
+
+            // 스크롤 위치가 일정 이상일 경우 버튼을 보여줌
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                btnTop.style.display = "block";
+            } else {
+                btnTop.style.display = "none";
+            }
+        }
+
+        function scrollToTop() {
+            document.body.scrollTop = 0; // Safari
+            document.documentElement.scrollTop = 0; // Chrome, Firefox, IE, Opera
+        }
+        /*]]>*/
+    </script>
+    
+    <div id="btn_top" class="btn_top" onclick="scrollToTop()">
+		<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
+			class="bi bi-arrow-up-circle top_button" viewBox="0 0 16 16">
+			<path fill-rule="evenodd"
+				d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z" />
+		</svg>
+	</div>
+    <!-- btn top [e] -->
+    
+    <!-- <footer> [s] -->
+	<div th:replace="fragment/footer :: footer">-- thymeleaf header will be inserted here. --</div>
+	<!-- <footer> [e] -->
+
+
+    <script th:inline="javascript">
+
+        var currentPage = 1;
+        let a = /*[[${CookuidSize}]]*/ CookuidSize;
+        let totalPages = a / 4;
+
+
+        function gopage(pageNumber) {
+            var prevArrow = document.querySelector('.arrow.left');
+            var nextArrow = document.querySelector('.arrow.right');
+
+            if (pageNumber === 'prev') {
+                if (currentPage > 1) {
+                    currentPage--;
+                }
+            } else if (pageNumber === 'next') {
+                if (currentPage < totalPages) {
+                    currentPage++;
+                }
+            } else {
+                currentPage = pageNumber;
+            }
+
+            var paginateLinks = document.querySelectorAll('.paginate a');
+            paginateLinks.forEach(function (link) {
+                link.classList.remove('active');
+            });
+
+            var activeLink = document.querySelector('.paginate a:nth-child(' + (currentPage + 1) + ')');
+            activeLink.classList.add('active');
+
+            if (currentPage === 1) {
+                prevArrow.style.display = 'none';
+                nextArrow.style.display = 'block';
+            } else if (currentPage === totalPages) {
+                prevArrow.style.display = 'block';
+                nextArrow.style.display = 'none';
+            } else {
+                prevArrow.style.display = 'block';
+                nextArrow.style.display = 'block';
+            }
+
+            // 페이지 이동에 따른 추가 작업 수행
+            // ...
+
+            console.log('현재 페이지:', currentPage);
+        }
+    </script>
+
+</body>
+
+
+
+</html>

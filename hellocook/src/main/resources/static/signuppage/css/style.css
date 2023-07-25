@@ -1,0 +1,16 @@
+body{
+    background-color: #f1f1f1;
+}
+.py-4{
+    width: 40%;
+    margin-top: 15px;
+    background-color: #ffced4;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.my-button{
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}

@@ -1,0 +1,501 @@
+
+      
+      
+      /* 링크 밑줄지우기(S) */
+a {
+  text-decoration: none;
+  color: hsl(0, 0%, 47%);
+  font-size: 19px;
+  display:inline
+}
+      /* 링크 밑줄지우기(E) */
+
+
+      /* li 앞에 점 지우기 (S) */
+li { 
+  list-style:none;
+}
+    /* li 앞에 점 지우기 (E) */
+
+    /* 해더쪽 css (S) */
+    .header {
+      position: relative;
+      width: 100%;
+      min-width: 1300px;
+      height: 172px;
+      box-sizing: border-box;
+      z-index: 13;
+      background: linear-gradient(to right, #bf132b, #f64646);
+  }
+    /* 헤더쪽 css (E)*/
+
+
+    /* 로고쪽 css (S) */
+   .logo {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      display: block;
+      width: 240px;
+      height: 66px;
+      margin-left: 0px;
+      margin-top: -33px;
+      /* background: url(../iconimage/logo.png) no-repeat center center; */
+      background-size: auto 66px;
+     }
+     /* 로고쪽 css(E) */
+
+     /* 검색쪽 이미지 위치 조절 */
+.top_sch{   
+  vertical-align: top;
+  padding: 5px;
+}
+  
+
+
+/* 라벨css 라벨 맞춤으로써 sch이미지 위치 조절 */
+label {
+  cursor: default;
+}
+
+
+    /* 로고 글자 색 변경 (S)*/
+    .log_text{
+      color: #f3f3f3;
+      font-size: 23px;
+    }
+    /* 로고 글자 색 변경 (E)*/
+
+    /* 로고쪽 css  로고 위치와 검색이랑 겹치지 않게 띄워놓는 css(s)*/
+     .header > .gnb_search > h1 {
+      position: relative;
+      float: left;
+      display: block;
+      width: 240px;
+      min-width: 240px;
+      height: 105px;
+      font-weight: 500;
+    font-size: 100%;
+    font-family: 'OTTOGISansBold';
+
+    }
+    /* 로고쪽 css  로고 위치와 검색이랑 겹치지 않게 띄워놓는 css(E)*/
+    
+    /* 검색창 css (S)*/
+    .header > .gnb_search {
+      width: 1280px;
+      height: 105px;
+      margin: 0 auto;
+      position: relative;
+      text-align: center;
+      
+    }
+    /* 검색창 css (E)*/
+
+    /* 검색창 스타일 css (S)*/
+  .header > .gnb_search > .gnb_sch_area input {
+    background: transparent;
+    font-size: 22px;
+    border: 2px solid #fff;
+    border-width: 0 0 2px 0;
+    padding: 10px 0 18px;
+    width: 578px;
+    text-align: center;
+    font-family: 'OTTOGISans';
+    vertical-align: middle;
+  }
+  /* 검색창 스타일 css (E)*/
+
+  /* 메뉴바에 카테고리 글자 폰트 및 사이즈 관련 css(S) */
+  .navbar-default .navbar-nav>li a {
+    line-height: 25px;
+    font-weight: bold;
+    color: #454545;
+    font-size: 20px;
+    color: #454545;
+    position: relative;
+    letter-spacing: -1.5px !important;
+    width: 108%;
+    min-width: 108%;
+}
+/* 카테고리쪽 폰트 및 글자 사이즈관련 css (E)*/
+
+/* 메뉴 카테고리 각 사이의 간격 15씩 주기(S)*/
+.navbar-nav>li a {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+/* 메뉴 카테고리 각 사이의 간격 15씩 주기(E) */
+
+
+
+
+/* 신비한 요리사전 글자 css (S)*/
+  .title h2 {
+    font-size: 45px;
+    line-height: 45px;
+    color: #333;
+    text-align: center;
+    display: block;
+
+}
+/* 신비한 요리사전 글자 css (E) */
+
+
+/* 요리사전 아이콘쪽 배경색 (s) */
+.subTopAreahit {
+  background: #f3f3f3;
+  padding: 0 0 20px;
+} 
+/* 요리사전 아이콘쪽 배경색 (E) */
+
+.container {
+  width: 100%;
+  min-width: 1368px;
+  margin: auto auto;
+  position: relative;
+  display: block;
+  clear: both;
+}
+/* 신비한 요리사전이 ~ 여기쪽 색 주기(S) */
+.Tag h3 {
+  font-size: 30px;
+  color: #f64646;
+  margin-bottom: 50px;
+  text-align: center;
+}
+/* 신비한 요리사전이 ~ 여기쪽 색 주기(E) */
+/* 테그 가운데 주고 버튼만들기*/
+.Tag {
+  position: relative;
+  text-align: center;
+  margin-bottom: 20px;
+  
+}
+/* 테그 가운데 주고 버튼만들기*/
+
+/* 테그 버튼 스타일 주기 */
+.Tag a {
+  font-size: 20px;
+  line-height: 25px;
+  color: #777777;
+  padding: 5px 20px 7px;
+  border: 1px solid #c1c1c1;
+  background: #fff;
+  border-radius: 50px; 
+}
+/* 테그 버튼 스타일 주기 */
+
+/* 버튼 가운데 정렬 (S)*/
+.Tag ul {
+  display: block;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+/* 버튼 가운데 정렬 (E)*/
+
+/* 태그버튼 간격 벌리기(S) */
+.tag_list {
+  margin: 5px;
+}
+/* 태그버튼 간격 벌리기(E) */
+
+/* 밑에 나열되는 메뉴에 선을 줘서 구분하는 css(S) 0623 수정 '전체레시피'위에 붉은 줄 긋기  */ 
+.cate_sub a:after {
+  width: 1px;
+  height: 18px;
+  background: #c2c2c2;
+  display: inline-block;
+  content: '';
+  margin: 0 15px;
+}
+/* 밑에 나열되는 메뉴에 선을 줘서 구분하는 css(S) */
+
+
+
+/* 카테고리 아이콘 간격 주기(S) */
+.cate_area {
+  width: 1250px;
+  margin: 50px auto 30px;
+}
+/* 카테고리 아이콘 간격 주기(E) */
+
+/*매인테그 아이콘 폰트 사이즈 및 색깔*/
+.cate_area .cate_menu li {
+  float: left;
+  width: 98px;
+  height: 140px;
+  margin-right: 93px;
+  font-size: 17px;
+  color: #666;
+  font-weight: bold;
+  }
+  /*매인테그 아이콘 폰트 사이즈 및 색깔*/
+
+  /* 아이콘이 좀더 위로 올수 있게 위치 css 줌 (S) */
+.content {
+  position: relative;
+  width: 1280px;
+  margin: 0 auto;
+  vertical-align: top;
+  display: block;
+  clear: both;
+
+}
+/* 아이콘이 좀더 위로 올수 있게 위치 css 줌 (E) */
+
+/* 인기많은 ~ css 글자 폰트 (S) */
+.thmb_list02 h2 {
+  font-size: 30px;
+  color: #333;
+  text-align: center;
+  display: block;
+  margin-bottom: 30px;
+}
+/* 인기많은 ~ css 글자 폰트 (E) */
+
+/* 전체레시피 강조 css 글자 색 변경  (S) */
+.thmb_list02 h2 strong {
+  color: #f64646;
+}
+/* 전체레시피 강조 css 글자 색 변경  (E) */
+
+/* 전체 레시피 간격조절 (S) */
+.thmb_list02 {
+  width: 1300px;
+  margin: 0 auto;
+  display: table;
+  position: relative;
+  margin-bottom: 20px;
+}
+/* 전체 레시피 간격조절 (E) */
+
+/* 전체 레시피 세부 간격 조절 (S) */
+.thmb_list02 .info {
+  padding: 30px 0 10px;
+}
+.pt90 {
+  padding-top: 90px;
+}
+/* 전체 레시피 세부 간격 조절 (E) */
+
+/* 레시피 리스트 전체 div 관련 css(S) */
+.thmb_list02 .list_area {
+  width: 100%;
+  display: table;
+}
+/* 레시피 리스트 전체 div 관련 css(E) */
+
+/* 레시피들 옆으로 오게 하면서 정렬(S) */
+.thmb_list02 .item {
+  float: left;
+  width: 305px;
+  min-height: 300px;
+  margin-right: 20px;
+  vertical-align: top;
+  padding: 15px 0 30px;
+}
+/* 레시피들 옆으로 오게 하면서 정렬(E) */
+
+/* 종류, 재료, 방법등 서브카테고리 백그라운드 및 글자 폰트 설정 (S) */
+.cate_sub th {
+  font-size: 19px;
+  color: #666;
+  font-weight: bold;
+  border-bottom: 1px solid #bbbbbb;
+  background: #f9f9f9;
+  padding: 20px;
+  width: 100px;
+}
+/* 종류, 재료, 방법등 서브카테고리 백그라운드 및 글자 폰트 설정 (E) */
+
+/* 서브 카테고리 메뉴 밑줄긋기 (S) */
+.cate_sub td {
+  border-bottom: 1px solid #bbbbbb;
+  padding: 20px;
+  width: 1280px;
+}
+/* 서브 카테고리 메뉴 밑줄긋기 (E) */
+
+/* 아이콘 위치 css(S) */
+.thmb_list02 .thmb .icon {
+  position: absolute;
+  right: 20px;
+  bottom: 0;
+  z-index: 2;
+  text-align: right;
+  width: 245px;
+  height: 48px;
+  top: 20px;
+}
+/* 아이콘 위치 css(S) */
+
+/* 추천 아이콘 뜨게 하는 css(s) */
+/* .thmb_list02 .thmb .icon i {
+  width: 48px;
+  height: 48px;
+  background: url(../iconimage/list_icon.png)no-repeat;
+  content: '';
+  display: inline-block;
+  font-size: 0;
+  margin-left: 7px;
+} */
+/* 추천 아이콘 뜨게 하는 css(E) */
+
+/* 추천 아이콘 뜨게 하는 css top , bottom으로 나눔(S) */
+/* .thmb_list02 .thmb .icon .icon_dm {
+  background-position: top;
+} */
+
+/* .thmb_list02 .thmb .icon .icon_best {
+  background-position: bottom;
+} */
+/* 추천 아이콘 뜨게 하는 css top , bottom으로 나눔(S) */
+
+/* 레시피 제목 관련 폰트조절 및 글자 색상 변화(S) */
+.thmb_list02 .info .info_title a {
+  font-size: 22px;
+  color: #333;
+  font-weight: bold;
+}
+/* 레시피 제목 관련 폰트조절 및 글자 색상 변화(E) */
+
+ .thmb_list02 .info {
+  padding: 30px 0 10px;
+}
+
+
+/* 이미지에 주는 css */
+.thmb_list02 .img {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+ /* 마우스 갖다대면 사진 확대하는 것 (S) */
+ .scale {
+  transform: scale(1);
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transition: all 0.3s ease-in-out;   /* 부드러운 모션을 위해 추가*/
+}
+
+.scale:hover {
+  transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -o-transform: scale(1.2);
+  overflow: hidden;
+}
+/* 마우스 갖다대면 사진 확대하는 것 (E) */
+
+
+
+/* 메뉴바 가장  바깥쪽 div (S) */
+.outmeubar {
+  position: relative;
+  width: 100%;
+  height: 68px;
+  margin: 0 auto;
+  background: #fff;
+  border-bottom: 1px solid #d5d5d5;
+  box-shadow: 3px 3px 5px rgba(0,0,0,0.04);
+  display: block;
+}
+/* 메뉴바 가장  바깥쪽 div (E) */
+
+.now_page {
+  position: relative;
+  width: 1280px;
+  margin: 20px auto 30px;
+  vertical-align: top;
+  display: block;
+  clear: both;
+}
+/* 홈.카테고리쪽 css */
+
+
+.hidden {
+  position: absolute;
+  left: -999999px;
+  top: -999999px;
+  width: 0;
+  height: 0;
+  font-size: 0;
+  display: block;
+}
+
+p {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+.now_page ul {
+  position: relative;
+  text-align: right;
+}
+
+/* 메뉴바 css */
+
+.menubar {
+  position: relative;
+  width: 100%;
+  height: 68px;
+  margin: 0 auto;
+  background: #fff;
+  border-bottom: 1px solid #d5d5d5;
+  box-shadow: 3px 3px 5px rgba(0,0,0,0.04);
+  display: block;
+}
+
+ul {
+  display: block;
+  list-style-type: disc;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+}
+
+
+/* 맨 밑에 페이지 넘길때 쓰는 css */
+.paginate {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  justify-content: center; /* 가운데 정렬 */
+}
+
+.paginate a {
+  margin-right: 10px;
+}
+
+.paginate .arrow {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.paginate .arrow.left {
+  transform: rotate(180deg);
+}
+
+.paginate .arrow:before {
+  content: '';
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid black;
+  margin-right: 5px;
+  vertical-align: middle;
+}
