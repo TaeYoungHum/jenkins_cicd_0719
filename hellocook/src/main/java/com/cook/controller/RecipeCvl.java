@@ -371,17 +371,30 @@ public class RecipeCvl implements RecipeController {
 		model.addAttribute("ranCookTableJpas",ranCookTableJpas); //ranCookTableJpas[]
 		model.addAttribute("ranTagTableJpas",ranTagTableJpas); // ranCookTableJpas[]
 		
+		
+		
+		
+		
+		
+		
 		//최신순 5개
 		model.addAttribute("cookTableJpas_newSort5",cookTableJpas_newSort5);
 		model.addAttribute("newTagTableJpas",newTagTableJpas);
 		
-		
-		
-		return "mainpage_test";
+	
+		return "mainpage";
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
 	@Override
-	@GetMapping("/mrd/subpage") // 현재 연산부를 service로 몰아야한다. 지금은 연습용
+	@GetMapping("/mrd/subpage") 
 	public String callSubPage(Model model) throws Exception {
 		// TODO Auto-generated method stub
 		// 0.

@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Swiper demo</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+
+	<!-- 부트스트랩 5.2(링크를 Content Delivery Network이라고 한다) -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+	<!-- Link Swiper's CSS -->
+	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+	<link rel="stylesheet" th:href="@{/mainpage/css/mainpage_test.css}">
+	<link rel="stylesheet" th:href="@{/search/css/style.css}">
+</head>
+<body>
+	<!-- header [s]-->
+	<div th:replace="fragment/header :: header">-- thymeleaf header will be inserted here. --</div>
+	<!-- header [e]-->
+	
+	<!-- 인기레시피 전체 영역 [s] -->
+	<div class="main_box main_hit">
+  		<h2 class="main hr">인기레시피</h2>
+		<p class="main">인기 레시피를 만들어 먹어보세요.</p>
+  		<div class="row justify-content-center">
+    		<div class="col-md-2 text-center">
+      			<div class="img_box image-container">
+        			<img th:src="@{/upload/}+${cookTableJpa1.representativeCookImg}" width="250" height="250" style="margin-left: 0px;" class="mx-auto zoom-image" alt="">
+      			</div>
+      			<div class="num lank_number"> [[${cookTableJpa1.cookTitle}]]</div>
+      			<div class="text_box_limit lank_text">[[${foodDescribes[0]}]]</div>
+    		</div>
+    		<div class="col-md-2 text-center">
+      			<div class="img_box image-container">
+        			<img th:src="@{/upload/}+${cookTableJpa2.representativeCookImg}" width="250" height="250" class="mx-auto zoom-image" alt="">
+      			</div>
+      			<div class="num lank_number"> [[${cookTableJpa2.cookTitle}]]</div>
+     			<div class="text_box_limit lank_text">[[${foodDescribes[1]}]]</div>
+    		</div>
+    		<div class="col-md-2 text-center">
+      			<div class="img_box image-container">
+        			<img th:src="@{/upload/}+${cookTableJpa3.representativeCookImg}" width="250" height="250" class="mx-auto zoom-image" alt="">
+      			</div>
+			    <div class="num lank_number"> [[${cookTableJpa1.cookTitle}]]</div>
+			    <div class="text_box_limit lank_text">[[${foodDescribes[0]}]]</div>
+			</div>
+  		</div>
+  		<!-- 인기레시피 3x1 [e] -->
+  		
+  		<!-- 인기레시피 3x2 [s] -->
+  		<div class="row justify-content-center">
+    		<div class="col-md-2 text-center">
+      			<div class="img_box image-container">
+        			<img th:src="@{/upload/}+${cookTableJpa4.representativeCookImg}" width="250" height="250" class="mx-auto zoom-image" alt="">
+      			</div>
+      			<div class="num lank_number"> [[${cookTableJpa2.cookTitle}]]</div>
+      			<div class="text_box_limit lank_text">[[${foodDescribes[1]}]]</div>
+    		</div>
+    		<div class="col-md-2 text-center">
+      			<div class="img_box image-container">
+        			<img th:src="@{/upload/}+${cookTableJpa5.representativeCookImg}" width="250" height="250" class="mx-auto zoom-image" alt="">
+      			</div>
+      			<div class="num lank_number"> [[${cookTableJpa5.cookTitle}]]</div>
+      			<div class="text_box_limit lank_text">[[${foodDescribes[0]}]]</div>
+    		</div>
+    		<div class="col-md-2 text-center">
+      			<div class="img_box image-container">
+        			<img th:src="@{/upload/}+${cookTableJpa6.representativeCookImg}" width="250" height="250" class="mx-auto zoom-image" alt="">
+      			</div>
+      			<div class="num lank_number"> [[${cookTableJpa6.cookTitle}]]</div>
+      			<div class="text_box_limit lank_text">[[${foodDescribes[1]}]]</div>
+    		</div>
+  		</div>
+	</div>
+	<!-- 인기레시피 전체 영역 [e] -->
+
+	
+	<!-- Swiper JS -->
+	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+	<!-- Initialize Swiper -->
+	<script>
+		var swiper = new Swiper(".mySwiper", {
+			spaceBetween: 30,
+			centeredSlides: true,
+			autoplay: {
+				delay: 3000,
+				disableOnInteraction: false,
+			},
+			pagination: {
+				el: ".banner-pagination",
+				clickable: true,
+			},
+			navigation: {
+				nextEl: ".banner-button-next",
+				prevEl: ".banner-button-prev",
+			},
+		});
+	</script>
+
+	<!-- 추천레시피 [s] -->
+	<div class="main">
+		<div class="menu_block">
+			<h2 class="main hr">추천레시피</h2>
+				<p class="main">홈페이지에서 제안하는 레시피로 최고의 순간을 만들어 보세요.</p>
+		</div>
+	</div>
+	<!-- 추천레시피 [e] -->
+	
+	<!-- 추천레시피 상위 노란박스 [s] -->
+	<div class="subimg " style="display: block; display: flex; justify-content: center; padding-right: 0;">
+		<div class="itmeleft" style="margin-right:1%; float: left; width: 30%; height: 50%;">
+			<div class="items01 yellow1 image-container">
+				<img th:src="@{/upload/}+${ranCookTableJpas[0].representativeCookImg}" class="zoom-image">
+				<!-- tag div [s] -->
+				<div class="tagContainer" style="font-size: 16px;">
+					<script th:inline="javascript">
+    					let adTags0 = /*[[${ranTagTableJpas[0].tagTableJpas}]]*/[];
+    					let tagContainer0 = document.getElementsByClassName("tagContainer")[0];
+
+    					for (let tag of adTags0) {
+        					let makeSpan = document.createElement("span");
+        					makeSpan.className = "adTagSpan";
+        					makeSpan.textContent = tag.tag_name + " ";
+        					tagContainer0.appendChild(makeSpan);
+    					}
+					</script>
+				</div>
+				<!-- tag div [e] -->
+				
+				<a href="" style="font-size: 1.2vw; font-size: 30px;color: #333; text-decoration: none;">[[${ranCookTableJpas[0].cookTitle}]]</a>
+			</div>
+			<!-- 추천레시피 상위 노란박스 [e] -->
+			
+			<!-- 추천레시피 왼쪽 전체 영역 [s] -->
+			<div class="bottom">
+				<!-- 추천레시피 왼쪽 두번째 사진 [s] -->
+				<div class="items01 image-container" style="display: inline-block; margin-top: 30px;">
+					<span><img th:src="@{/upload/}+${ranCookTableJpas[1].representativeCookImg}" class="zoom-image" style="width:100%;"></span>
+					<!-- tag div [s] -->
+					<div class="tagContainer" style="font-size: 16px;">
+						<script th:inline="javascript">
+    						let adTags1 = /*[[${ranTagTableJpas[1].tagTableJpas}]]*/[];
+    						let tagContainer1 = document.getElementsByClassName("tagContainer")[1];
+
+    						for (let tag of adTags1) {
+        						let makeSpan = document.createElement("span");
+        						makeSpan.className = "adTagSpan";
+        						makeSpan.textContent = tag.tag_name + " ";
+        						tagContainer1.appendChild(makeSpan);
+    						}
+						</script>
+					</div>
+					<!-- tag div e-->
+					
+					<a href="" style="font-size: 1.2vw; font-size: 30px; color: #333; text-decoration: none;">[[${ranCookTableJpas[1].cookTitle}]]</a>
+				</div>
+				<!-- 추천레시피 왼쪽 두번째 사진 [e] -->
+				
+				<!-- 추천레시피 왼쪽 세번째 사진 [s] -->
+				<div class="items01 image-container" style="display: inline-block; margin-top: 30px;">
+					<span><img th:src="@{/upload/}+${ranCookTableJpas[2].representativeCookImg}" class="zoom-image" style="width:100%;"></span>
+					<!-- tag div [s] -->
+					<div class="tagContainer" style="font-size: 16px;">
+						<script th:inline="javascript">
+    						let adTags2 = /*[[${ranTagTableJpas[2].tagTableJpas}]]*/[];
+    						let tagContainer2 = document.getElementsByClassName("tagContainer")[2];
+
+    						for (let tag of adTags2) {
+        						let makeSpan = document.createElement("span");
+        						makeSpan.className = "adTagSpan";
+        						makeSpan.textContent = tag.tag_name + " ";
+        						tagContainer2.appendChild(makeSpan);
+    						}
+						</script>
+					</div>
+					<!-- tag div [e] -->
+					<a href="" style="font-size: 1.2vw; font-size: 30px; color: #333; text-decoration: none;">[[${ranCookTableJpas[2].cookTitle}]]</a>
+				</div>
+				<!-- 추천레시피 왼쪽 세번째 사진 [e] -->
+			</div>
+			<!-- 추천레시피 왼쪽 전체 영역 [e] -->
+		</div>
+	
+		<!-- 추천레시피 오른쪽 전체 영역 [s] -->
+		<div class="itmeright" style="margin-left:1%; width: 30%; height: 50%;">
+			<div class="top">
+				<!-- 오른쪽 추천레시피 첫번째 부분 [s] -->
+				<div class="items01 image-container" style="display: inline-block;">
+					<span><img th:src="@{/upload/}+${ranCookTableJpas[3].representativeCookImg}" class="zoom-image" style="width:100%;"></span>
+					<!-- tag div [s] -->
+					<div class="tagContainer" style="font-size: 16px;">
+						<script th:inline="javascript">
+	    					let adTags3 = /*[[${ranTagTableJpas[3].tagTableJpas}]]*/[];
+	    					let tagContainer3 = document.getElementsByClassName("tagContainer")[3];
+	
+	    					for (let tag of adTags3) {
+	        					let makeSpan = document.createElement("span");
+	        					makeSpan.className = "adTagSpan";
+	        					makeSpan.textContent = tag.tag_name + " ";
+	        					tagContainer3.appendChild(makeSpan);
+							}
+						</script>
+					</div>
+					<!-- tag div [e] -->
+					<a href="" style="font-size: 1.2vw; font-size: 30px; color: #333; text-decoration: none;">[[${ranCookTableJpas[3].cookTitle}]]</a>
+				</div>
+				
+				<!-- 오른쪽 추천레시피 첫번째 부분 [s] -->
+				<div class="items01 image-container" style="display: inline-block; margin: 30px 0 30px;">
+					<span><img th:src="@{/upload/}+${ranCookTableJpas[4].representativeCookImg}" class="zoom-image" style="width:100%;"></span>
+					<!-- tag div s-->
+					<div class="tagContainer" style="font-size: 16px;">
+						<script th:inline="javascript">
+    						let adTags4 = /*[[${ranTagTableJpas[4].tagTableJpas}]]*/[];
+    						let tagContainer4 = document.getElementsByClassName("tagContainer")[4];
+
+    						for (let tag of adTags4) {
+        						let makeSpan = document.createElement("span");
+		        				makeSpan.className = "adTagSpan";
+		        				makeSpan.textContent = tag.tag_name + " ";
+		        				tagContainer4.appendChild(makeSpan);
+		    				}
+						</script>
+					</div>
+					<!-- tag div e-->
+					<a href="" style="font-size: 1.2vw; font-size: 30px; color: #333; text-decoration: none;">[[${ranCookTableJpas[4].cookTitle}]]</a>
+				</div>
+				<!-- 오른쪽 추천레시피 첫번째 부분 [e] -->
+			</div>
+			
+			<!-- 오른쪽 하단 노란박스 [s] -->
+			<div class="items01 yellow1 image-container">
+				<span><img th:src="@{/upload/}+${ranCookTableJpas[5].representativeCookImg}" class="zoom-image" style="width:100%;" /></span>
+				<!-- tag div s-->
+				<div class="tagContainer" style="font-size: 16px;">
+					<script th:inline="javascript">
+						let adTags5 = /*[[${ranTagTableJpas[5].tagTableJpas}]]*/[];
+						let tagContainer5 = document.getElementsByClassName("tagContainer")[5]; //class 명으로 div를 지목하고.
+
+						for (let tag of adTags5) {
+							let makeSpan = document.createElement("span"); //span 요소를 만들겠다 선언. 하지만 실제 삽인은 아직.
+							makeSpan.className = "adTagSpan"; //span에 class name 삽입.
+							makeSpan.textContent = tag.tag_name + " "; // 내용 삽입.
+							//document.body.appendChild(span); //위에서 만든 div 를 메모리에서 실제로 만드는 부분. commit 명령어랑 비슷
+							tagContainer5.appendChild(makeSpan); //div 안에 만들꺼니. tagContainer.appendChild() 함수 사용
+						}
+					</script>
+				</div>
+				<!-- tag div e-->
+				<a href="" style="font-size: 1.2vw; font-size: 30px; color: #333; text-decoration: none;">[[${ranCookTableJpas[5].cookTitle}]]</a>
+			</div>
+		</div>
+		<!-- 추천레시피 오른쪽 전체 영역 [e] -->
+	</div>
+	<!-- 추천레시피 상위 노란박스 [e] -->
+	
+	<!-- 최신레시피 전체 영역 [s] -->
+	<div class="subimg">
+		<h2 class="main hr">최신레시피</h2>
+		<p class="main">최신 레시피로 신상의 음식을 만들어 보세요.</p>
+		<div class="container">
+			<div class="swiper bottomimg" style="display: flex; justify-content: center;">
+				<div class="swiper-wrapper btmimg">
+					<!-- 최신레시피 슬라이드 이미지 첫번째 [s] -->
+					<div class="swiper-slide">
+						<div class="row-md-3">
+							<div class="img_wrap">
+								<img th:src="@{/upload/}+${cookTableJpas_newSort5[0].representativeCookImg}" style="float: left; width: 20rem; height: 20rem;" />
+							</div>
+							<div class="text_box">			
+								<div class="txt">
+									<div class="newTagContainer" style="font-size: 1vw;">
+										<h3>[[${cookTableJpas_newSort5[0].cookTitle}]]</h3>
+										<span>[[${newTagTableJpas[0].tagTableJpas[0].tag_name}]]
+											  [[${newTagTableJpas[0].tagTableJpas[1].tag_name}]]
+										</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 최신레시피 슬라이드 이미지 첫번째 [e] -->
+					
+					<!-- 최신레시피 슬라이드 이미지 두번째 [s] -->
+					<div class="swiper-slide">
+						<div class="row-md-3">
+							<div class="img_wrap">
+								<img th:src="@{/upload/}+${cookTableJpas_newSort5[1].representativeCookImg}" style="float: left; width: 20rem; height: 20rem; " />
+							</div>
+							<div class="text_box" style="top: 263px;">			
+								<div class="txt">
+									<div class="newTagContainer" style="font-size: 1vw;">
+										<h3>[[${cookTableJpas_newSort5[1].cookTitle}]]</h3>
+										<span>[[${newTagTableJpas[1].tagTableJpas[0].tag_name}]]
+											  [[${newTagTableJpas[1].tagTableJpas[1].tag_name}]]
+										</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 최신레시피 슬라이드 이미지 두번째 [e] -->
+					
+					<!-- 최신레시피 슬라이드 이미지 세번째 [s] -->
+					<div class="swiper-slide ">
+						<div class="row-md-3">
+							<div class="img_wrap">
+								<img th:src="@{/upload/}+${cookTableJpas_newSort5[2].representativeCookImg}" style="float: left; width: 20rem; height: 20rem;" />
+							</div>
+							<div class="text_box" style="top: 263px;">			
+								<div class="txt">
+									<div class="newTagContainer" style="font-size: 1vw;">
+										<h3>[[${cookTableJpas_newSort5[2].cookTitle}]]</h3>
+										<span>[[${newTagTableJpas[2].tagTableJpas[0].tag_name}]]
+											  [[${newTagTableJpas[2].tagTableJpas[1].tag_name}]]
+										</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>	
+					<!-- 최신레시피 슬라이드 이미지 세번째 [e] -->
+					
+					<!-- 최신레시피 슬라이드 이미지 네번째 [s] -->
+					<div class="swiper-slide ">
+						<div class="row-md-3">
+							<div class="img_wrap">
+								<img th:src="@{/upload/}+${cookTableJpas_newSort5[3].representativeCookImg}" style="float: left; width: 20rem; height: 20rem;" />
+							</div>
+							<div class="text_box" style="top: 263px;">			
+								<div class="txt">
+									<div class="newTagContainer" style="font-size: 1vw;">
+										<h3>[[${cookTableJpas_newSort5[3].cookTitle}]]</h3>
+										<span>[[${newTagTableJpas[3].tagTableJpas[0].tag_name}]]
+											  [[${newTagTableJpas[3].tagTableJpas[1].tag_name}]]
+										</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 최신레시피 슬라이드 이미지 네번째 [e] -->
+					
+					<!-- 최신레시피 슬라이드 이미지 다섯번째 [s] -->
+					<div class="swiper-slide ">
+						<div class="row-md-3">
+							<img th:src="@{/upload/}+${cookTableJpas_newSort5[4].representativeCookImg}" style="float: left; width: 20rem; height: 20rem;" />
+						</div>
+						<div class="text_box">			
+							<div class="txt">
+								<h3>[[${cookTableJpas_newSort5[4].cookTitle}]]</h3>
+								<span>[[${newTagTableJpas[4].tagTableJpas[0].tag_name}]]
+									  [[${newTagTableJpas[4].tagTableJpas[1].tag_name}]]
+								</span>
+							</div>
+						</div>
+					</div>
+					<!-- 최신레시피 슬라이드 이미지 다섯번째 [e] -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 최신레시피 전체 영역 [e] -->
+	
+	<!-- swiper 라이브러리 파일 로드 [s] -->		
+	<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+	<!-- swiper 라이브러리 파일 로드 [e] -->		
+		
+	<script>
+	var swiper = new Swiper('.bottomimg', {
+    slidesPerView: 4,
+    loop: true, // 무한 슬라이드 활성화
+    loopedSlides: 6, // 복사할 슬라이드 개수 설정 (실제로 보여지는 슬라이드 개수보다 2개 더 많게 설정)
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+    autoplay: {
+        delay: 2000,
+        disableOnInteraction: false, // 슬라이드에 인터랙션 발생해도 자동 재생 유지
+        reverseDirection: true, // 자동 재생이 끝에 도달하면 반대 방향으로 이동하여 다시 처음으로 돌아감
+    },
+});
+
+function getDirection() {
+    var windowWidth = window.innerWidth;
+    var direction = window.innerWidth <= 760 ? 'vertical' : 'horizontal';
+
+    return direction;
+}
+	</script>
+
+	
+	<script>
+		//리미트 걸기
+		const textElements = document.querySelectorAll(".text_box_limit");
+		const maxLength = 15; // 최대 길이 설정
+
+		textElements.forEach((element) => {
+			if (element.innerText.length > maxLength) {
+				const truncatedText = element.innerText.substring(0, maxLength) + "...";
+				element.innerText = truncatedText;
+			}
+		});
+	</script>
+	
+	<!-- btn top [s] -->
+    <div id="btn_top" class="btn_top" onclick="scrollToTop()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
+            class="bi bi-arrow-up-circle top_button" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+                d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z" />
+        </svg>
+    </div>
+    <!-- btn top [e] -->
+
+	<!-- <footer> [s] -->
+	<div th:replace="fragment/footer :: footer">-- thymeleaf header will be inserted here. --</div>
+	<!-- <footer> [e] -->
+		
+	<script>
+        // 스크롤 이벤트 핸들러
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            var btnTop = document.getElementById("btn_top");
+
+            // 스크롤 위치가 일정 이상일 경우 버튼을 보여줌
+           if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                btnTop.style.display = "block";
+            } else {
+                btnTop.style.display = "none";
+            }
+        }
+
+        function scrollToTop() {
+            document.body.scrollTop = 0; // Safari
+            document.documentElement.scrollTop = 0; // Chrome, Firefox, IE, Opera
+        }
+    </script>
+</body>
+</html>
