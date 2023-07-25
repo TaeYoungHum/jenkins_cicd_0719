@@ -382,7 +382,7 @@ public class RecipeCvl implements RecipeController {
 		model.addAttribute("newTagTableJpas",newTagTableJpas);
 		
 	
-		return "mainpage";
+		return "mainpage_test";
 	}
 
 	
