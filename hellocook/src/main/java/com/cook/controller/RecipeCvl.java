@@ -377,11 +377,20 @@ public class RecipeCvl implements RecipeController {
 		
 		
 		
-		return "mainpage";
+		
+		
+		
+		
+	
+		
+		// mainpage 관련 컨트롤러 입니다.
+		
+		
+		return "mainpage_test";
 	}
 
 	@Override
-	@GetMapping("/mrd/subpage") // 현재 연산부를 service로 몰아야한다. 지금은 연습용
+	@GetMapping("/mrd/subpage") 
 	public String callSubPage(Model model) throws Exception {
 		// TODO Auto-generated method stub
 		// 0.
