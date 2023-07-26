@@ -377,7 +377,7 @@ public class RecipeCvl implements RecipeController {
 		
 		
 		
-		return "mainpage";
+		return "mainpage_test";
 	}
 
 	@Override
