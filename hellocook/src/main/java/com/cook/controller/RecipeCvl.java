@@ -386,7 +386,7 @@ public class RecipeCvl implements RecipeController {
 		// mainpage 관련 컨트롤러 입니다.
 		
 		
-		return "mainpage_test";
+		return "mainpage";
 	}
 
 	@Override
