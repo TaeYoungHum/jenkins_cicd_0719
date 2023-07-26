@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Swiper demo</title>
+	<title>신비한 요리 사전</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
 
 	<!-- 부트스트랩 5.2(링크를 Content Delivery Network이라고 한다) -->
@@ -15,68 +15,34 @@
 	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 	<link rel="stylesheet" th:href="@{/mainpage/css/mainpage_test.css}">
 	<link rel="stylesheet" th:href="@{/search/css/style.css}">
+	<!-- 높은 해상도의 Favicon 이미지 (선택 사항) -->
+  	<link rel="icon" th:href="@{/fragment/imgfile/logo/mixer.png}" sizes="32x32" type="image/png">
+	<!-- 구글 웹폰트 링크 추가 -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=IBM+Plex+Sans+KR:wght@500;700&family=Noto+Sans+KR:wght@500;700&family=Stylish&display=swap" rel="stylesheet">
 </head>
-<body style="background-color:darkgrey;">
+<body>
 	<!-- header [s]-->
 	<div th:replace="fragment/header :: header">-- thymeleaf header will be inserted here. --</div>
 	<!-- header [e]-->
 	
-	<!-- 인기레시피 전체 영역 [s] -->
-	<div class="main_box main_hit">
-  		<h2 class="main hr">인기레시피</h2>
-		<p class="main">인기 레시피를 만들어 먹어보세요.</p>
-  		<div class="row justify-content-center">
-    		<div class="col-md-2 text-center">
-      			<div class="img_box image-container">
-        			<img th:src="@{/upload/}+${cookTableJpa1.representativeCookImg}" width="250" height="250" style="margin-left: 0px;" class="mx-auto zoom-image" alt="">
-      			</div>
-      			<div class="num lank_number"> [[${cookTableJpa1.cookTitle}]]</div>
-      			<div class="text_box_limit lank_text">[[${foodDescribes[0]}]]</div>
-    		</div>
-    		<div class="col-md-2 text-center">
-      			<div class="img_box image-container">
-        			<img th:src="@{/upload/}+${cookTableJpa2.representativeCookImg}" width="250" height="250" class="mx-auto zoom-image" alt="">
-      			</div>
-      			<div class="num lank_number"> [[${cookTableJpa2.cookTitle}]]</div>
-     			<div class="text_box_limit lank_text">[[${foodDescribes[1]}]]</div>
-    		</div>
-    		<div class="col-md-2 text-center">
-      			<div class="img_box image-container">
-        			<img th:src="@{/upload/}+${cookTableJpa3.representativeCookImg}" width="250" height="250" class="mx-auto zoom-image" alt="">
-      			</div>
-			    <div class="num lank_number"> [[${cookTableJpa1.cookTitle}]]</div>
-			    <div class="text_box_limit lank_text">[[${foodDescribes[0]}]]</div>
+	<!-- 상단 Swiper [s] -->
+	<div class="main_mainpage">
+		<div class="swiper mySwiper">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide"><img th:src="@{/upload/}+${adCookTableJpas[0].representativeCookImg}"></div>
+				<div class="swiper-slide"><img th:src="@{/upload/}+${adCookTableJpas[1].representativeCookImg}"></div>
+				<div class="swiper-slide"><img th:src="@{/upload/}+${adCookTableJpas[2].representativeCookImg}"></div>
 			</div>
-  		</div>
-  		<!-- 인기레시피 3x1 [e] -->
-  		
-  		<!-- 인기레시피 3x2 [s] -->
-  		<div class="row justify-content-center">
-    		<div class="col-md-2 text-center">
-      			<div class="img_box image-container">
-        			<img th:src="@{/upload/}+${cookTableJpa4.representativeCookImg}" width="250" height="250" class="mx-auto zoom-image" alt="">
-      			</div>
-      			<div class="num lank_number"> [[${cookTableJpa2.cookTitle}]]</div>
-      			<div class="text_box_limit lank_text">[[${foodDescribes[1]}]]</div>
-    		</div>
-    		<div class="col-md-2 text-center">
-      			<div class="img_box image-container">
-        			<img th:src="@{/upload/}+${cookTableJpa5.representativeCookImg}" width="250" height="250" class="mx-auto zoom-image" alt="">
-      			</div>
-      			<div class="num lank_number"> [[${cookTableJpa5.cookTitle}]]</div>
-      			<div class="text_box_limit lank_text">[[${foodDescribes[0]}]]</div>
-    		</div>
-    		<div class="col-md-2 text-center">
-      			<div class="img_box image-container">
-        			<img th:src="@{/upload/}+${cookTableJpa6.representativeCookImg}" width="250" height="250" class="mx-auto zoom-image" alt="">
-      			</div>
-      			<div class="num lank_number"> [[${cookTableJpa6.cookTitle}]]</div>
-      			<div class="text_box_limit lank_text">[[${foodDescribes[1]}]]</div>
-    		</div>
-  		</div>
+			<div>
+				<div class="swiper-button-next banner-button-next"></div>
+				<div class="swiper-button-prev banner-button-prev"></div>
+				<div class="swiper-pagination banner-pagination"></div>
+			</div>
+		</div>
 	</div>
-	<!-- 인기레시피 전체 영역 [e] -->
-
+	<!-- 상단 Swiper [e] -->
 	
 	<!-- Swiper JS -->
 	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
@@ -104,8 +70,8 @@
 	<!-- 추천레시피 [s] -->
 	<div class="main">
 		<div class="menu_block">
-			<h2 class="main hr">추천레시피</h2>
-				<p class="main">홈페이지에서 제안하는 레시피로 최고의 순간을 만들어 보세요.</p>
+			<h2 class="main hr" style="font-family: 'Noto Sans KR', sans-serif;">추천레시피</h2>
+				<p class="main" style="font-family: 'IBM Plex Sans KR', sans-serif;">홈페이지에서 제안하는 레시피로 최고의 순간을 만들어 보세요.</p>
 		</div>
 	</div>
 	<!-- 추천레시피 [e] -->
@@ -116,7 +82,7 @@
 			<div class="items01 yellow1 image-container">
 				<img th:src="@{/upload/}+${ranCookTableJpas[0].representativeCookImg}" class="zoom-image">
 				<!-- tag div [s] -->
-				<div class="tagContainer" style="font-size: 16px;">
+				<div class="tagContainer" style="font-family: 'Stylish', sans-serif; font-size: 20px; color: #777;">
 					<script th:inline="javascript">
     					let adTags0 = /*[[${ranTagTableJpas[0].tagTableJpas}]]*/[];
     					let tagContainer0 = document.getElementsByClassName("tagContainer")[0];
@@ -131,7 +97,7 @@
 				</div>
 				<!-- tag div [e] -->
 				
-				<a href="" style="font-size: 1.2vw; font-size: 30px;color: #333; text-decoration: none;">[[${ranCookTableJpas[0].cookTitle}]]</a>
+				<a href="" style="font-family: 'Gowun Dodum', sans-serif; font-size: 1.2vw; font-size: 30px;color: #333; text-decoration: none;">[[${ranCookTableJpas[0].cookTitle}]]</a>
 			</div>
 			<!-- 추천레시피 상위 노란박스 [e] -->
 			
@@ -141,7 +107,7 @@
 				<div class="items01 image-container" style="display: inline-block; margin-top: 30px;">
 					<span><img th:src="@{/upload/}+${ranCookTableJpas[1].representativeCookImg}" class="zoom-image" style="width:100%;"></span>
 					<!-- tag div [s] -->
-					<div class="tagContainer" style="font-size: 16px;">
+					<div class="tagContainer" style="font-family: 'Stylish', sans-serif; font-size: 20px; color: #777;">
 						<script th:inline="javascript">
     						let adTags1 = /*[[${ranTagTableJpas[1].tagTableJpas}]]*/[];
     						let tagContainer1 = document.getElementsByClassName("tagContainer")[1];
@@ -156,7 +122,7 @@
 					</div>
 					<!-- tag div e-->
 					
-					<a href="" style="font-size: 1.2vw; font-size: 30px; color: #333; text-decoration: none;">[[${ranCookTableJpas[1].cookTitle}]]</a>
+					<a href="" style="font-family: 'Gowun Dodum', sans-serif; font-size: 1.2vw; font-size: 30px; color: #333; text-decoration: none;">[[${ranCookTableJpas[1].cookTitle}]]</a>
 				</div>
 				<!-- 추천레시피 왼쪽 두번째 사진 [e] -->
 				
@@ -164,7 +130,7 @@
 				<div class="items01 image-container" style="display: inline-block; margin-top: 30px;">
 					<span><img th:src="@{/upload/}+${ranCookTableJpas[2].representativeCookImg}" class="zoom-image" style="width:100%;"></span>
 					<!-- tag div [s] -->
-					<div class="tagContainer" style="font-size: 16px;">
+					<div class="tagContainer" style="font-family: 'Stylish', sans-serif; font-size: 20px; color: #777;">
 						<script th:inline="javascript">
     						let adTags2 = /*[[${ranTagTableJpas[2].tagTableJpas}]]*/[];
     						let tagContainer2 = document.getElementsByClassName("tagContainer")[2];
@@ -178,7 +144,7 @@
 						</script>
 					</div>
 					<!-- tag div [e] -->
-					<a href="" style="font-size: 1.2vw; font-size: 30px; color: #333; text-decoration: none;">[[${ranCookTableJpas[2].cookTitle}]]</a>
+					<a href="" style="font-family: 'Gowun Dodum', sans-serif; font-size: 1.2vw; font-size: 30px; color: #333; text-decoration: none;">[[${ranCookTableJpas[2].cookTitle}]]</a>
 				</div>
 				<!-- 추천레시피 왼쪽 세번째 사진 [e] -->
 			</div>
@@ -192,7 +158,7 @@
 				<div class="items01 image-container" style="display: inline-block;">
 					<span><img th:src="@{/upload/}+${ranCookTableJpas[3].representativeCookImg}" class="zoom-image" style="width:100%;"></span>
 					<!-- tag div [s] -->
-					<div class="tagContainer" style="font-size: 16px;">
+					<div class="tagContainer" style="font-family: 'Stylish', sans-serif; font-size: 20px; color: #777;">
 						<script th:inline="javascript">
 	    					let adTags3 = /*[[${ranTagTableJpas[3].tagTableJpas}]]*/[];
 	    					let tagContainer3 = document.getElementsByClassName("tagContainer")[3];
@@ -206,14 +172,14 @@
 						</script>
 					</div>
 					<!-- tag div [e] -->
-					<a href="" style="font-size: 1.2vw; font-size: 30px; color: #333; text-decoration: none;">[[${ranCookTableJpas[3].cookTitle}]]</a>
+					<a href="" style="font-family: 'Gowun Dodum', sans-serif; font-size: 1.2vw; font-size: 30px; color: #333; text-decoration: none;">[[${ranCookTableJpas[3].cookTitle}]]</a>
 				</div>
 				
 				<!-- 오른쪽 추천레시피 첫번째 부분 [s] -->
 				<div class="items01 image-container" style="display: inline-block; margin: 30px 0 30px;">
 					<span><img th:src="@{/upload/}+${ranCookTableJpas[4].representativeCookImg}" class="zoom-image" style="width:100%;"></span>
 					<!-- tag div s-->
-					<div class="tagContainer" style="font-size: 16px;">
+					<div class="tagContainer" style="font-family: 'Stylish', sans-serif; font-size: 20px; color: #777;">
 						<script th:inline="javascript">
     						let adTags4 = /*[[${ranTagTableJpas[4].tagTableJpas}]]*/[];
     						let tagContainer4 = document.getElementsByClassName("tagContainer")[4];
@@ -227,7 +193,7 @@
 						</script>
 					</div>
 					<!-- tag div e-->
-					<a href="" style="font-size: 1.2vw; font-size: 30px; color: #333; text-decoration: none;">[[${ranCookTableJpas[4].cookTitle}]]</a>
+					<a href="" style="font-family: 'Gowun Dodum', sans-serif; font-size: 1.2vw; font-size: 30px; color: #333; text-decoration: none;">[[${ranCookTableJpas[4].cookTitle}]]</a>
 				</div>
 				<!-- 오른쪽 추천레시피 첫번째 부분 [e] -->
 			</div>
@@ -236,7 +202,7 @@
 			<div class="items01 yellow1 image-container">
 				<span><img th:src="@{/upload/}+${ranCookTableJpas[5].representativeCookImg}" class="zoom-image" style="width:100%;" /></span>
 				<!-- tag div s-->
-				<div class="tagContainer" style="font-size: 16px;">
+				<div class="tagContainer" style="font-family: 'Stylish', sans-serif; font-size: 20px; color: #777;">
 					<script th:inline="javascript">
 						let adTags5 = /*[[${ranTagTableJpas[5].tagTableJpas}]]*/[];
 						let tagContainer5 = document.getElementsByClassName("tagContainer")[5]; //class 명으로 div를 지목하고.
@@ -251,7 +217,7 @@
 					</script>
 				</div>
 				<!-- tag div e-->
-				<a href="" style="font-size: 1.2vw; font-size: 30px; color: #333; text-decoration: none;">[[${ranCookTableJpas[5].cookTitle}]]</a>
+				<a href="" style="font-family: 'Gowun Dodum', sans-serif; font-size: 1.2vw; font-size: 30px; color: #333; text-decoration: none;">[[${ranCookTableJpas[5].cookTitle}]]</a>
 			</div>
 		</div>
 		<!-- 추천레시피 오른쪽 전체 영역 [e] -->
@@ -260,8 +226,8 @@
 	
 	<!-- 최신레시피 전체 영역 [s] -->
 	<div class="subimg">
-		<h2 class="main hr">최신레시피</h2>
-		<p class="main">최신 레시피로 신상의 음식을 만들어 보세요.</p>
+		<h2 class="main hr" style="font-family: 'Noto Sans KR', sans-serif;">최신레시피</h2>
+		<p class="main" style="font-family: 'IBM Plex Sans KR', sans-serif;">최신 레시피로 신상의 음식을 만들어 보세요.</p>
 		<div class="container">
 			<div class="swiper bottomimg" style="display: flex; justify-content: center;">
 				<div class="swiper-wrapper btmimg">
@@ -398,7 +364,62 @@ function getDirection() {
 }
 	</script>
 
-	
+	<!-- 인기레시피 전체 영역 [s] -->
+	<div class="main_box main_hit">
+  		<h2 class="main hr" style="font-family: 'Noto Sans KR', sans-serif;">인기레시피</h2>
+		<p class="main" style="font-family: 'IBM Plex Sans KR', sans-serif;">인기 레시피를 만들어 먹어보세요.</p>
+  		<div class="row justify-content-center" style="font-family: 'Stylish', sans-serif; font-size: 20px;">
+    		<div class="col-md-2 text-center">
+      			<div class="img_box image-container">
+        			<img th:src="@{/upload/}+${cookTableJpa1.representativeCookImg}" width="250" height="250" style="margin-left: 0px;" class="mx-auto zoom-image" alt="">
+      			</div>
+      			<div class="num lank_number"> [[${cookTableJpa1.cookTitle}]]</div>
+      			<div class="text_box_limit lank_text" style="color: #777;">[[${foodDescribes[0]}]]</div>
+    		</div>
+    		<div class="col-md-2 text-center">
+      			<div class="img_box image-container">
+        			<img th:src="@{/upload/}+${cookTableJpa2.representativeCookImg}" width="250" height="250" class="mx-auto zoom-image" alt="">
+      			</div>
+      			<div class="num lank_number"> [[${cookTableJpa2.cookTitle}]]</div>
+     			<div class="text_box_limit lank_text" style="color: #777;">[[${foodDescribes[1]}]]</div>
+    		</div>
+    		<div class="col-md-2 text-center">
+      			<div class="img_box image-container">
+        			<img th:src="@{/upload/}+${cookTableJpa3.representativeCookImg}" width="250" height="250" class="mx-auto zoom-image" alt="">
+      			</div>
+			    <div class="num lank_number"> [[${cookTableJpa1.cookTitle}]]</div>
+			    <div class="text_box_limit lank_text" style="color: #777;">[[${foodDescribes[0]}]]</div>
+			</div>
+  		</div>
+  		<!-- 인기레시피 3x1 [e] -->
+  		
+  		<!-- 인기레시피 3x2 [s] -->
+  		<div class="row justify-content-center" style="font-family: 'Stylish', sans-serif; font-size: 20px;">
+    		<div class="col-md-2 text-center">
+      			<div class="img_box image-container">
+        			<img th:src="@{/upload/}+${cookTableJpa4.representativeCookImg}" width="250" height="250" class="mx-auto zoom-image" alt="">
+      			</div>
+      			<div class="num lank_number"> [[${cookTableJpa2.cookTitle}]]</div>
+      			<div class="text_box_limit lank_text" style="color: #777;">[[${foodDescribes[1]}]]</div>
+    		</div>
+    		<div class="col-md-2 text-center">
+      			<div class="img_box image-container">
+        			<img th:src="@{/upload/}+${cookTableJpa5.representativeCookImg}" width="250" height="250" class="mx-auto zoom-image" alt="">
+      			</div>
+      			<div class="num lank_number"> [[${cookTableJpa5.cookTitle}]]</div>
+      			<div class="text_box_limit lank_text" style="color: #777;">[[${foodDescribes[0]}]]</div>
+    		</div>
+    		<div class="col-md-2 text-center">
+      			<div class="img_box image-container">
+        			<img th:src="@{/upload/}+${cookTableJpa6.representativeCookImg}" width="250" height="250" class="mx-auto zoom-image" alt="">
+      			</div>
+      			<div class="num lank_number"> [[${cookTableJpa6.cookTitle}]]</div>
+      			<div class="text_box_limit lank_text" style="color: #777;">[[${foodDescribes[1]}]]</div>
+    		</div>
+  		</div>
+	</div>
+	<!-- 인기레시피 전체 영역 [e] -->
+
 	<script>
 		//리미트 걸기
 		const textElements = document.querySelectorAll(".text_box_limit");
@@ -445,6 +466,34 @@ function getDirection() {
             document.body.scrollTop = 0; // Safari
             document.documentElement.scrollTop = 0; // Chrome, Firefox, IE, Opera
         }
+        
+        /*
+        // 첫 페이지 로딩 시, 사용자의 테마 설정을 확인하고 다크 모드를 적용합니다.
+		if (localStorage.getItem('theme') === 'dark') {
+		  document.body.classList.add('dark-mode');
+		  updateIcon('bi-moon-fill', 'bi-brightness-high'); // 아이콘 변경
+		}
+		
+		// 토글 버튼 클릭 시, 다크 모드와 라이트 모드를 전환합니다.
+		function toggleMode() {
+		  if (document.body.classList.contains('dark-mode')) {
+		    document.body.classList.remove('dark-mode');
+		    localStorage.setItem('theme', 'light'); // 사용자 테마 설정 저장
+		    updateIcon('bi-brightness-high', 'bi-moon-fill'); // 아이콘 변경
+		  } else {
+		    document.body.classList.add('dark-mode');
+		    localStorage.setItem('theme', 'dark'); // 사용자 테마 설정 저장
+		    updateIcon('bi-moon-fill', 'bi-brightness-high'); // 아이콘 변경
+		  }
+		}
+		
+		// 아이콘 변경 함수
+		function updateIcon(removeIcon, addIcon) {
+		  const icon = document.getElementById('brightnessIcon');
+		  icon.classList.remove(removeIcon);
+		  icon.classList.add(addIcon);
+		}
+		*/
     </script>
 </body>
 </html>

@@ -8,7 +8,13 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">	
     <!-- style.css 연동 및 하단 css 포함 -->
 	<link rel="stylesheet" th:href="@{/recipepage/css/style.css}">
-    <title>recipepage</title>
+    <!-- 높은 해상도의 Favicon 이미지 (선택 사항) -->
+  	<link rel="icon" th:href="@{/fragment/imgfile/logo/mixer.png}" sizes="32x32" type="image/png">
+    <!-- 구글 웹폰트 링크 추가 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=IBM+Plex+Sans+KR:wght@500;700&family=Jua&family=Noto+Sans+KR:wght@500;700&family=Stylish&display=swap" rel="stylesheet">
+    <title th:text="${cookJpa.cookTitle}"></title>
 </head>
 
 <body>
@@ -21,7 +27,7 @@
         	<div class="row justify-content-center">
             	<div class="col-md-8">
                 	<img th:src="@{'/upload/' + ${cookJpa.representativeCookImg}}" class="card-img-top" alt="#로드 에러" style="height: 695px;">
-                	<div class="card-body">
+                	<div class="card-body" style="font-family: 'Jua', sans-serif;";>
                     	<p class="card-text">
                     		<h2>[[${cookJpa.cookTitle}]]</h2>
                     		<ul>
@@ -75,7 +81,7 @@
     </div>
  
     <!-- 만드는 방법 & 조리과정 [s] -->
-    <div class="cook-make">
+    <div class="cook-make" style="font-family: 'Noto Sans KR', sans-serif;">
         <h3>만드는 방법</h3>
         <br>
         <!-- 1 반복 필요[s]-->
@@ -135,6 +141,20 @@
     <!-- <footer> [s]-->
 	<div th:replace="fragment/footer :: footer">-- thymeleaf header will be inserted here. --</div>
 	<!-- <footer> [e] -->
+	
+	<!-- URL alert -->	
+	<script>
+    	function copy_trackback(address) {
+			var IE=(document.all)?true:false;
+			if (IE) {
+				if(confirm("이 글의 주소를 클립보드에 복사하시겠습니까?"))
+					window.clipboardData.setData("Text", address);
+			} else {
+				temp = prompt("이 글의 주소입니다. Ctrl+C를 눌러 클립보드로 복사하세요", address);
+			}
+		}
+	</script>
+		
     <script>
         // 스크롤 이벤트 핸들러
         window.onscroll = function () { scrollFunction() };

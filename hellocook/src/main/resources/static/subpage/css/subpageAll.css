@@ -137,7 +137,6 @@ label {
     color: #333;
     text-align: center;
     display: block;
-
 }
 /* 신비한 요리사전 글자 css (E) */
 
@@ -236,7 +235,6 @@ label {
   /* 아이콘이 좀더 위로 올수 있게 위치 css 줌 (S) */
 .content {
   position: relative;
-  width: 1280px;
   margin: 0 auto;
   vertical-align: top;
   display: block;

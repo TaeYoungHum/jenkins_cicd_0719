@@ -33,6 +33,10 @@
 				width: 59px; 
 				height: 40.39px;
 			}
+			/* 기본 "선택된 파일이 없음" 텍스트 숨기기 */
+			#fileInput {
+  				color: transparent;
+			}
 			
 			.bi me-2{
 				position: absolute;
@@ -148,14 +152,15 @@
 		<!-- 이미지 판별기 [s] -->
 		<form method="post" id="form_deepimg" class="form_deepimg" action="" enctype="multipart/form-data">
 			<div class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
-				<button id="deepImgClose" class="btn btn-close" type="button" onclick="closeImgbtn()" alt="close">
+				<button id="deepImgClose" class="btn btn-close" type="button" onclick="closeImgbtn()" alt="close" style="margin-left: 3px; margin-right: 3px; margin-top: 3px;">
 				</button>
 			</div>
-			<div style="vertical-align: top;">
+			<div style="vertical-align: top; border: 2px dashed #ccc; text-align: center; cursor: pointer; width: 155px; height: 155px; margin-left: 40px;">
 				<div><img width="150" height="150" class="fimg" style="visibility: hidden;"></div>
 				<div>
+					<br>
 					<!-- <input type="text" id="imgs_cook" value="결과값 출력 되는 부분 " /> -->
-					<input type="file" name="uploadfile" multiple="multiple" onchange="loadimg(event);" />
+					<input type="file" name="uploadfile" multiple="multiple" onchange="loadimg(event);" style="width: 90px; margin-left: -4px;" />
 					<!-- <input type="button" value="보내기"  /> -->
 					<button id="toggleButton_deepimg" class="btn btn-outline-secondary btn-warning" type="button"
 						alt="imgsearch" onclick="getImges()">
@@ -300,7 +305,13 @@
 				board.src = URL.createObjectURL(file);
 				board.style.visibility = 'visible';
 			}
-
+			
+			// 이미지 판별기 창 닫기 
+			function closeImgbtn() {
+    			var formDeepimg = document.getElementById("form_deepimg");
+    			formDeepimg.style.display = "none";
+			}
+			
 			async function getImges() {
 				let formData = new FormData(form_deepimg);
 

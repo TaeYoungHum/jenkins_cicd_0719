@@ -1,4 +1,4 @@
-.footer{position: relative; width:100%;min-width: 1300px; display: block; clear: both; padding-bottom: 40px; background: hsl(33, 37, 41);}
+.footer{position: relative; width:100%; display: block; clear: both; padding-bottom: 40px; background: hsl(33, 37, 41);}
 #btn_top{position: fixed; right:10px; bottom:20px; z-index: 6;}
 
 #footer .f_info{display: table; margin-top:38px;}

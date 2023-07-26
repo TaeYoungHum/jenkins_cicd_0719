@@ -1,8 +1,7 @@
 #resultTable {position: absolute; width: 100%;}
 #resultTable img{position: relative; width: 100%; float: center;}
 
+th {background-color: #f2f2f2; padding: 10px; text-align: left; text-decoration: none;}
 
-th {background-color: #f2f2f2; padding: 10px; text-align: left;}
-td {border: 1px solid #dddddd; padding: 8px; text-align: left;}
 
 .btn_top{color: grey; width:4%; margin:0%; display: inline-block; position: fixed; bottom: 20px; right: 10px; z-index: 99; cursor: pointer; background-image: url('../images/btn_top.png') no-repeat center;}

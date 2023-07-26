@@ -9,7 +9,13 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 	<link rel="stylesheet" th:href="@{/search/css/style.css}">
-	<title>Document</title>
+	<!-- 높은 해상도의 Favicon 이미지 (선택 사항) -->
+  	<link rel="icon" th:href="@{/fragment/imgfile/logo/mixer.png}" sizes="32x32" type="image/png">
+	<!-- 구글 웹폰트 링크 추가 -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=IBM+Plex+Sans+KR:wght@500;700&family=Noto+Sans+KR:wght@500;700&family=Stylish&display=swap" rel="stylesheet">
+	<title>검색결과 | 신비한레시피</title>
 
 	<style>
 		body {
@@ -25,37 +31,65 @@
         }
 		
 		.result {
-			flex: 1;
-		}
+            flex: 1;
+            position: relative;
+            padding-bottom: 50px;
+        }
 		
-		th {
-			background-color: #f2f2f2; /* 배경색 설정 */
-			padding: 10px; /* 셀 내부 여백 설정 */
-			text-align: left; /* 텍스트 정렬 설정 */
+		.header-cell {
+		    background-color: #f2f2f2; /* 배경색 설정 */
+		    padding: 10px; /* 셀 내부 여백 설정 */
+		    text-align: left; /* 텍스트 정렬 설정 */
 		}
    		
-   		td {
-			border: 1px solid #dddddd; /* 테두리 설정 */
-			padding: 8px; /* 셀 내부 여백 설정 */
-			text-align: left; /* 텍스트 정렬 설정 */
+   		.content-cell {
+		    border: 1px solid #dddddd; /* 테두리 설정 */
+		    padding: 8px; /* 셀 내부 여백 설정 */
+		    text-align: left; /* 텍스트 정렬 설정 */
 		}
    		
    		#ajaxFooter {
 			margin-top: 20px;
 			width: 100%;
 			position: relative;
-	  		left: 0;
+	  		left: -180px;
 	  		bottom: 0;
-
+	  		height: 50px;
+		}
+		
+		#resultTable{
+			position: relative;	
+			margin: 30px;
+		}
+		
+		.search-name{
+			left: 760px;
+			position: absolute;
+			text-decoration: none;
+			text-align: center;
+			color: black;
+			font-family: 'Gowun Dodum', sans-serif;
+			font-size: 30px;
+		}
+		
+		img.search-image{
+			width: 400px;
+			height: 300px;
+		}
+		
+		.search-tag{
+			text-decoration: none;
+			color: #777;
+			font-family: 'Stylish', sans-serif;
+			font-size: 20px;
+			margin-top: 10px;
+			left: 2000px;
 		}
 		
 	</style>
-
-
-
 </head>
 
-<body>
+<div>
 
 	<!-- header [s]-->
 	<div th:replace="fragment/header :: header">-- thymeleaf header will be inserted here. --</div>
@@ -63,20 +97,24 @@
 
 	<!-- 테스트용 검색창 [s] -->
 
-	<div class="search-test">
-		<input type="text" id="imgs_catdog" th:value="${param.cookName}" />
-		<input type="button" value="검색" onclick="sendAjaxRequest()" />
-	</div>
+	<nav class="navbar navbar-expand-lg bg-secondary" style="--bs-bg-opacity: .3;">
+		<div class="container-fluid">
+			<form class="d-flex" role="search" style="margin-left: 1450px;">
+				<input type="text" id="imgs_catdog" th:value="${param.cookName}" style="margin-right: 5px;"/>
+				<input class="btn btn-outline-success" type="button" value="검색" onclick="sendAjaxRequest()" style=""/>
+			</form>
+		</div>
+	</nav>
 	<!-- 테스트용 검색창 [e] -->
 
 	<!-- result 전체 영역 [s] -->
-	<div class="result">
+	<div class="result" style="left: 300px; width: 1600px;">
 		<div>
 			<table id="resultTable" class="container" style="table-layout:fixed ">
 				<thead>
 					<tr>
-						<th id="th1">요리</th>
-						<th id="th2">태그</th>
+						<th class="header-cell" id="th1">요리</th>
+						<th class="content-cell" id="th2">태그</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -85,12 +123,11 @@
 			</table>
 		</div>
 	</div>	
-		<!--<footer> [s]-->
-			<footer id="ajaxFooter" style="width: 119rem; margin-left: -13px;">
-				<div th:replace="fragment/footer :: footer">-- thymeleaf header will be inserted here. --</div>
-			</footer>
-		<!-- <footer> [e]  -->
-		
+	<!--<footer> [s]-->
+	<div th:replace="fragment/footer :: footer">-- thymeleaf header will be inserted here. --</div>
+	<!-- <footer> [e]  -->
+	</div>
+	
 	<!-- btn top [s] -->
 	<div id="btn_top" class="btn_top" onclick="scrollToTop()">
 		<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
@@ -160,21 +197,27 @@
 
 					// 전체 row를 감싸는 링크 생성
 
-
+					// 요리명
 					const cell1 = row.insertCell();
 					const link1 = document.createElement('a');
 					link1.href = contextPath + 'mrd/recipe?cookUid=' + data[i].cookTableJpa.cook_uid; // 요리 레시 페이지 링크 설정
 					link1.innerHTML = data[i].cookTableJpa.cookTitle; // cookTitle 속성 표시
+					// 클래스명 설정 후 추가
+					link1.classList.add('search-name');
 					cell1.appendChild(link1);
-
+					
+					// 이미지
 					const cell2 = row.insertCell();
 					const link2 = document.createElement('a');
 					link2.href = contextPath + 'mrd/recipe?cookUid=' + data[i].cookTableJpa.cook_uid; // 요리 레시 페이지 링크 설정
 					const img = document.createElement('img');
 					img.src = outLocalContextPath + data[i].cookTableJpa.representativeCookImg; // representativeCookImg 속성 표시
+					// 이미지에 클래스명 추가
+					img.classList.add('search-image');
 					link2.appendChild(img);
 					cell2.appendChild(link2);
-
+					
+					// 해시태그
 					const cell3 = row.insertCell();
 					// 태그 검색하여 각가에 링크 걸
 					for (let j = 0; j < data[i].tagTableJpas.length; j++) {
@@ -185,6 +228,8 @@
 						//const tagNames = data[i].tagTableJpas.map(tag => tag.tag_name).join(', '); // tag_name 속성들을 ','로 구분하여 문자열로 변환
 						const tagNames = data[i].tagTableJpas[j].tag_name;
 						link3.innerHTML = tagNames;
+						// 클래스명 추가
+						link3.classList.add('search-tag');
 						cell3.appendChild(link3);
 
 						// 태그 사이에 ', ' 추가

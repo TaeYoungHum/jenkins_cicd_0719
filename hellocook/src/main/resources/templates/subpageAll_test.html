@@ -4,11 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SubPage</title>
+    <title>전체 레시피</title>
 
     <!-- 서브페이지 css-->
     <link rel="stylesheet" th:href="@{/subpage/css/subpageAll.css}">
 	<link rel="stylesheet" th:href="@{/search/css/style.css}">
+	<!-- 높은 해상도의 Favicon 이미지 (선택 사항) -->
+  	<link rel="icon" th:href="@{/fragment/imgfile/logo/mixer.png}" sizes="32x32" type="image/png">
+	<!-- 구글 웹폰트 링크 추가 -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=IBM+Plex+Sans+KR:wght@500;700&family=Noto+Sans+KR:wght@500;700&family=Stylish&display=swap" rel="stylesheet">
 </head>
 
 <body style="margin: 0px; ">
@@ -31,7 +37,7 @@
                     <div th:each="cookTableJpa, index : ${cookTableJpas_2}">
                         <div class="item" style="height: 496.5px; width: 305px;">
                             <div class="thmb">
-                                <a th:href="@{/mrd/recipe?cookUid=}+${cookTableJpa.cook_uid}" style="text-decoration: none; font-size: 30px; color: black;">
+                                <a th:href="@{/mrd/recipe?cookUid=}+${cookTableJpa.cook_uid}" style="font-family: 'Gowun Dodum', sans-serif; text-decoration: none; font-size: 30px; color: black;">
                                     <!-- get 방식으로 해당 레시피 페이지 이동하게. http://localhost:8080/mrd/recipe?cookUid=? 양식-->
                                     <div class="img">
                                         <div class="scale">
@@ -51,7 +57,7 @@
                                         <div th:each="onlySubPageTagVo : ${onlySubPageTagVos[__${index.index}__]}">
                                             <!-- [[${index.index}]] -->
                                             <span th:each="tagTableJpa : ${onlySubPageTagVo.tagTableJpas}">
-                                                <a th:href="@{/mrd/ajax(cookName=${tagTableJpa.tag_name.substring(1)})}" style="text-decoration: none; color: black;">
+                                                <a th:href="@{/mrd/ajax(cookName=${tagTableJpa.tag_name.substring(1)})}" style="font-family: 'Stylish', sans-serif; text-decoration: none; color: #777;">
                                                     
                                                         [[${tagTableJpa.tag_name}]]
                                                   
@@ -133,7 +139,7 @@
     <!-- btn top [e] -->
     
     <!-- <footer> [s] -->
-	<div th:replace="fragment/footer :: footer">-- thymeleaf header will be inserted here. --</div>
+	<div th:replace="fragment/footer :: footer" class="custom-footer">-- thymeleaf header will be inserted here. --</div>
 	<!-- <footer> [e] -->
 
 
