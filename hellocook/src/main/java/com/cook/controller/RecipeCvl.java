@@ -715,5 +715,9 @@ public class RecipeCvl implements RecipeController {
 		
 		return "check";
 	}
-	
+	@GetMapping("/check")
+	public String check() {
+		
+		return "check";
+	}
 }
