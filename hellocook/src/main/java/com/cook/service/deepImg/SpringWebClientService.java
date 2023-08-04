@@ -25,7 +25,7 @@ public class SpringWebClientService {
         System.out.println("3");
         // Send a POST request to a URL with the form data and retrieve the response as a Mono<String>
         Mono<String> responseMono = client.post()
-                .uri("http://15.164.47.15:8000/catdogd/image") //프로젝트 명 바꿔주기
+                .uri("http://172.30.1.85:8000/catdogd/image") //프로젝트 명 바꿔주기
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
                 .body(BodyInserters.fromFormData(formData)) // .fromFormData(formData) 메서드를 통해 body에 MultiValueMap 타입 객체 formData를 body로 변환
                 .retrieve() //통신 요청보냄
